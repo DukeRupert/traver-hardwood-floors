@@ -18,3 +18,9 @@ Thumbs.db
 
 # Node (if using npm for asset pipeline)
 /node_modules/
+
+# API binary
+api/contact-api
+
+# Environment files
+.env

@@ -50,10 +50,33 @@
 
       <div class="contact-form">
         <h3>Send Us a Message</h3>
-        <form action="/thank-you/" method="POST" name="contact" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact">
+
+        <div id="form-success" class="form-message form-message-success" style="display: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <div>
+            <strong>Message Sent!</strong>
+            <p>Thank you for contacting us. We'll be in touch soon.</p>
+          </div>
+        </div>
+
+        <div id="form-error" class="form-message form-message-error" style="display: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div>
+            <strong>Something went wrong</strong>
+            <p id="error-message">Please try again or call us directly.</p>
+          </div>
+        </div>
+
+        <form id="contact-form">
           <p style="display: none;">
-            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+            <label>Don't fill this out if you're human: <input name="bot-field" id="bot-field"></label>
           </p>
 
           <div class="form-group">
@@ -76,10 +99,72 @@
             <textarea id="message" name="message" required minlength="40" maxlength="500" placeholder="Tell us about your project..."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">Send Message</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+  const API_URL = '{{ site.Params.apiUrl | default "/api/contact" }}';
+
+  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Honeypot check
+    if (document.getElementById('bot-field').value) {
+      return;
+    }
+
+    const form = e.target;
+    const submitBtn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('form-success');
+    const errorMsg = document.getElementById('form-error');
+    const errorText = document.getElementById('error-message');
+
+    // Reset messages
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+
+    // Disable button and show loading
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      message: document.getElementById('message').value
+    };
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        successMsg.style.display = 'flex';
+        form.reset();
+        form.style.display = 'none';
+      } else {
+        const text = await response.text();
+        errorText.textContent = text || 'Please try again or call us directly.';
+        errorMsg.style.display = 'flex';
+      }
+    } catch (error) {
+      errorText.textContent = 'Network error. Please try again or call us directly.';
+      errorMsg.style.display = 'flex';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+</script>
 {{ end }}
