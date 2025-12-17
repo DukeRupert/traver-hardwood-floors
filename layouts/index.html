@@ -1,0 +1,105 @@
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="hero" style="background-image: url('/images/hero-bg.jpg');">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>{{ .Params.hero.headline | default "Crafting Timeless Beauty One Floor at a Time" }}</h1>
+    <p>{{ .Params.hero.subheadline | default "Professional hardwood floor installation, sanding, finishing, and restoration in Helena, Montana." }}</p>
+    <div class="hero-buttons">
+      <a href="tel:{{ .Site.Params.phoneTel }}" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        Call Us
+      </a>
+      <a href="/contact-us/" class="btn btn-white">Get a Free Estimate</a>
+    </div>
+  </div>
+</section>
+
+<!-- Montana Inspired Section -->
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-image">
+        <img src="/images/montana-inspired.jpg" alt="Custom hardwood floor installation in Montana home">
+      </div>
+      <div class="feature-content">
+        <h2>Montana Inspired Designs</h2>
+        <p>Every home tells a story, and your floors should be part of that narrative. Our custom hardwood installations are crafted to complement Montana's unique character—from rustic mountain retreats to modern family homes.</p>
+        <p>We work with you to select the perfect wood species, stain colors, and finishes that match your vision and lifestyle.</p>
+        <a href="/installation/" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Family Owned Section -->
+<section class="feature-section" style="background-color: var(--color-bg-secondary);">
+  <div class="container">
+    <div class="feature-grid reverse">
+      <div class="feature-image">
+        <img src="/images/family-business.jpg" alt="The Traver family - hardwood flooring experts">
+      </div>
+      <div class="feature-content">
+        <h2>Family-Owned Tradition</h2>
+        <p>Traver Hardwood Floors is built on generations of craftsmanship. As a sixth-generation Montana native, Chris Traver brings 18 years of hardwood flooring expertise to every project.</p>
+        <p>When you choose us, you're not just getting a contractor—you're getting a family dedicated to excellence and standing behind every floor we install.</p>
+        <a href="/about-us/" class="btn btn-secondary">Meet Our Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Expert Services</h2>
+      <p>From new installations to restoring historic floors, we bring expertise and attention to detail to every project.</p>
+    </div>
+    <div class="services-grid">
+      {{ range .Site.Menus.services }}
+      <a href="{{ .URL }}" class="service-card">
+        <div class="service-card-image">
+          <img src="/images/service-{{ .Identifier | default (urlize .Name) }}.jpg" alt="{{ .Name }}">
+        </div>
+        <div class="service-card-content">
+          <h3>{{ .Name }}</h3>
+          <p>{{ with .Params.description }}{{ . }}{{ else }}Professional {{ lower .Name }} services.{{ end }}</p>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>What Our Clients Say</h2>
+      <p>Don't just take our word for it—hear from homeowners who've experienced the Traver difference.</p>
+    </div>
+    <div class="testimonials-grid">
+      {{ range .Params.testimonials }}
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          {{ range seq 5 }}★{{ end }}
+        </div>
+        <p class="testimonial-text">"{{ .quote }}"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">{{ substr .name 0 1 }}</div>
+          <div>
+            <div class="testimonial-name">{{ .name }}</div>
+            <div class="testimonial-location">{{ .location }}</div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ partial "cta-section.html" . }}
+{{ end }}

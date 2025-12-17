@@ -1,0 +1,70 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">Traver Hardwood Floors</a>
+        <p class="footer-tagline">{{ .Site.Params.tagline }}</p>
+        <div class="social-links">
+          {{ with .Site.Params.social.facebook }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          {{ end }}
+          {{ with .Site.Params.social.instagram }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          {{ end }}
+          {{ with .Site.Params.social.nextdoor }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Nextdoor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm2 13h-4v-1.39l-.5-.32C8.25 12.37 7 10.79 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.79-1.25 3.37-2.5 4.29l-.5.32V15z"/>
+              <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/>
+            </svg>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- Services Column -->
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          {{ range .Site.Menus.services }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <!-- Support Column -->
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/contact-us/">Contact Us</a></li>
+          <li><a href="tel:{{ .Site.Params.phoneTel }}">Call Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Column -->
+      <div class="footer-section">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about-us/">About Us</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ now.Year }} Traver Hardwood Floors. All rights reserved.</p>
+      <p class="footer-location">{{ .Site.Params.location }}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,67 @@
+{{ define "main" }}
+<section class="page-hero" {{ with .Params.hero_image }}style="background-image: linear-gradient(var(--color-overlay), var(--color-overlay)), url('{{ . }}'); background-size: cover; background-position: center;"{{ end }}>
+  <div class="container">
+    <h1>{{ .Params.headline | default .Title }}</h1>
+    <p class="hero-subtitle">{{ .Params.subtitle }}</p>
+  </div>
+</section>
+
+<section class="service-intro">
+  <div class="container">
+    <p>{{ .Params.intro }}</p>
+  </div>
+</section>
+
+{{ if .Params.features }}
+<section class="service-features">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ .Params.features_title | default "What We Offer" }}</h2>
+    </div>
+    <div class="features-list">
+      {{ range .Params.features }}
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h4>{{ .title }}</h4>
+          <p>{{ .description }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ if .Params.gallery }}
+<section class="service-gallery">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Work</h2>
+      <p>Browse examples of our {{ lower .Title }} projects</p>
+    </div>
+    <div class="gallery-grid">
+      {{ range .Params.gallery }}
+      <div class="gallery-item">
+        <img src="{{ .image }}" alt="{{ .alt }}">
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Content }}
+<section class="page-content">
+  <div class="container">
+    {{ . }}
+  </div>
+</section>
+{{ end }}
+
+{{ partial "cta-section.html" . }}
+{{ end }}

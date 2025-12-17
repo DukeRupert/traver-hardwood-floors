@@ -1,0 +1,27 @@
+---
+title: "Sanding & Finishing"
+description: "Expert hardwood floor sanding and finishing services in Helena, Montana. Revitalize your floors with our professional refinishing process."
+type: "services"
+headline: "Sanding & Finishing"
+subtitle: "Revitalize Your Floors"
+intro: "Revitalize damaged hardwood floors with our expert refinishing process. Enjoy beautiful, refinished hardwood floors in just a few days. Our professional sanding removes years of wear while our premium finishes protect and beautify your floors for years to come."
+features_title: "Refinishing Benefits"
+features:
+  - title: "Deep Scratch Removal"
+    description: "Our professional sanding eliminates deep scratches, gouges, discoloration, and fading from your floors."
+  - title: "Protective Finishes"
+    description: "We apply protective sealers and stains that shield against wear, stains, and moisture damage."
+  - title: "Custom Colors"
+    description: "Choose from a wide range of stain colors and finish sheens to match your evolving style preferences."
+  - title: "Water-Based Options"
+    description: "Chris is an expert in water-based finishes—low odor, quick drying, and environmentally friendly."
+gallery:
+  - image: "/images/gallery/sanding-1.jpg"
+    alt: "Antique hardwood with red stain removal"
+  - image: "/images/gallery/sanding-2.jpg"
+    alt: "Floor after old finish removal"
+  - image: "/images/gallery/sanding-3.jpg"
+    alt: "Restoration highlighting craftsmanship"
+  - image: "/images/gallery/sanding-4.jpg"
+    alt: "Before and after transformation"
+---

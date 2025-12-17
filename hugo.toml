@@ -1,3 +1,52 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://www.traverhardwoodfloors.com/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Traver Hardwood Floors'
+
+[params]
+  description = 'Crafting timeless beauty one floor at a time. Professional hardwood floor installation, sanding, finishing, repair and restoration in Helena, Montana.'
+  tagline = 'Crafting Timeless Beauty One Floor at a Time'
+  phone = '406-451-2282'
+  phoneFormatted = '(406) 451-2282'
+  phoneTel = '+1-406-451-2282'
+  location = 'Helena, Montana'
+
+  [params.social]
+    facebook = 'https://www.facebook.com/traverhardwoodfloors'
+    instagram = 'https://www.instagram.com/traverhardwoodfloors'
+    nextdoor = 'https://nextdoor.com/pages/traver-hardwood-floors-helena-mt'
+
+[menu]
+  [[menu.main]]
+    name = 'Services'
+    url = '/services/'
+    weight = 1
+  [[menu.main]]
+    name = 'About Us'
+    url = '/about-us/'
+    weight = 2
+  [[menu.main]]
+    name = 'Contact Us'
+    url = '/contact-us/'
+    weight = 3
+
+  [[menu.services]]
+    name = 'Installation'
+    url = '/installation/'
+    weight = 1
+  [[menu.services]]
+    name = 'Sanding & Finishing'
+    url = '/sanding-and-finishing/'
+    weight = 2
+  [[menu.services]]
+    name = 'Repair & Restoration'
+    url = '/repair-and-restoration/'
+    weight = 3
+  [[menu.services]]
+    name = 'Stairs'
+    url = '/stairs/'
+    weight = 4
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

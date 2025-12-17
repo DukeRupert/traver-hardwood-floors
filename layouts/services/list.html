@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container">
+    <h1>Our Services</h1>
+    <p class="hero-subtitle">Professional hardwood flooring solutions for every need</p>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <div class="services-grid">
+      {{ range .Site.Menus.services }}
+      <a href="{{ .URL }}" class="service-card">
+        <div class="service-card-image">
+          <img src="/images/service-{{ urlize .Name }}.jpg" alt="{{ .Name }}">
+        </div>
+        <div class="service-card-content">
+          <h3>{{ .Name }}</h3>
+          <p>Professional {{ lower .Name }} services tailored to your needs.</p>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ partial "cta-section.html" . }}
+{{ end }}
