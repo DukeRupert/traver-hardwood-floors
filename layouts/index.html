@@ -1,6 +1,6 @@
 {{ define "main" }}
 <!-- Hero Section -->
-<section class="hero" style="background-image: url('/images/hero-bg.jpg');">
+<section class="hero" style="background-image: url('/images/hero_image.jpeg');">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>{{ .Params.hero.headline | default "Crafting Timeless Beauty One Floor at a Time" }}</h1>
@@ -22,7 +22,7 @@
   <div class="container">
     <div class="feature-grid">
       <div class="feature-image">
-        <img src="/images/montana-inspired.jpg" alt="Custom hardwood floor installation in Montana home">
+        <img src="/images/20190608_134726.jpg" alt="Custom hardwood floor installation in Montana home">
       </div>
       <div class="feature-content">
         <h2>Montana Inspired Designs</h2>
@@ -39,7 +39,7 @@
   <div class="container">
     <div class="feature-grid reverse">
       <div class="feature-image">
-        <img src="/images/family-business.jpg" alt="The Traver family - hardwood flooring experts">
+        <img src="/images/Traver_106.jpg" alt="The Traver family - hardwood flooring experts">
       </div>
       <div class="feature-content">
         <h2>Family-Owned Tradition</h2>
@@ -59,17 +59,42 @@
       <p>From new installations to restoring historic floors, we bring expertise and attention to detail to every project.</p>
     </div>
     <div class="services-grid">
-      {{ range .Site.Menus.services }}
-      <a href="{{ .URL }}" class="service-card">
+      <a href="/installation/" class="service-card">
         <div class="service-card-image">
-          <img src="/images/service-{{ .Identifier | default (urlize .Name) }}.jpg" alt="{{ .Name }}">
+          <img src="/images/installation.jpg" alt="Installation">
         </div>
         <div class="service-card-content">
-          <h3>{{ .Name }}</h3>
-          <p>{{ with .Params.description }}{{ . }}{{ else }}Professional {{ lower .Name }} services.{{ end }}</p>
+          <h3>Installation</h3>
+          <p>Professional hardwood floor installation services.</p>
         </div>
       </a>
-      {{ end }}
+      <a href="/sanding-and-finishing/" class="service-card">
+        <div class="service-card-image">
+          <img src="/images/sanding_and_finishing.jpg" alt="Sanding & Finishing">
+        </div>
+        <div class="service-card-content">
+          <h3>Sanding & Finishing</h3>
+          <p>Expert refinishing to revitalize your floors.</p>
+        </div>
+      </a>
+      <a href="/repair-and-restoration/" class="service-card">
+        <div class="service-card-image">
+          <img src="/images/repair_and_restoration.jpg" alt="Repair & Restoration">
+        </div>
+        <div class="service-card-content">
+          <h3>Repair & Restoration</h3>
+          <p>Restore damaged and historic floors to beauty.</p>
+        </div>
+      </a>
+      <a href="/stairs/" class="service-card">
+        <div class="service-card-image">
+          <img src="/images/stairs.jpg" alt="Stairs">
+        </div>
+        <div class="service-card-content">
+          <h3>Stairs</h3>
+          <p>Custom hardwood staircase installations.</p>
+        </div>
+      </a>
     </div>
   </div>
 </section>
