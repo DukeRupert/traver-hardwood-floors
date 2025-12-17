@@ -1,9 +1,11 @@
 {
 	# Global options
 	admin off
+	# Disable auto HTTPS when behind reverse proxy
+	auto_https off
 }
 
-{$DOMAIN:localhost} {
+:{$PORT:80} {
 	# Serve static files from Hugo build
 	root * /srv
 	file_server

@@ -2,20 +2,11 @@ services:
   web:
     build: .
     ports:
-      - "80:80"
-      - "443:443"
+      - "${LISTEN_PORT:-8082}:80"
     environment:
-      - DOMAIN=${DOMAIN:-localhost}
+      - PORT=80
       - POSTMARK_TOKEN=${POSTMARK_TOKEN}
       - FROM_EMAIL=${FROM_EMAIL:-noreply@traverhardwoodfloors.com}
       - TO_EMAIL=${TO_EMAIL:-chris@traverhardwoodfloors.com}
       - ALLOWED_ORIGIN=${ALLOWED_ORIGIN:-https://www.traverhardwoodfloors.com}
-      - PORT=8080
-    volumes:
-      - caddy_data:/data
-      - caddy_config:/config
     restart: unless-stopped
-
-volumes:
-  caddy_data:
-  caddy_config:
