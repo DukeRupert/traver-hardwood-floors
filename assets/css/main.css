@@ -526,6 +526,95 @@ section {
   font-size: 0.875rem;
 }
 
+/* Our Work Section */
+.our-work-section {
+  background-color: var(--color-bg-secondary);
+}
+
+.projects-showcase {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .projects-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.project-showcase-card {
+  display: block;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--color-shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-showcase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  color: inherit;
+}
+
+.project-showcase-image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.project-showcase-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.project-showcase-card:hover .project-showcase-image img {
+  transform: scale(1.05);
+}
+
+.project-showcase-content {
+  padding: var(--spacing-lg);
+}
+
+.project-showcase-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+}
+
+.project-showcase-location {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-showcase-summary {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.5;
+}
+
+.project-showcase-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+.project-showcase-card:hover .project-showcase-link {
+  color: var(--color-primary-dark);
+}
+
+.section-footer {
+  text-align: center;
+  margin-top: var(--spacing-2xl);
+}
+
 /* Testimonials */
 .testimonials-section {
   background-color: var(--color-bg);

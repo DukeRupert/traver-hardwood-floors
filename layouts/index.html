@@ -99,6 +99,34 @@
   </div>
 </section>
 
+<!-- Our Work Section -->
+<section class="our-work-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Work</h2>
+      <p>See the craftsmanship and attention to detail we bring to every project.</p>
+    </div>
+    <div class="projects-showcase">
+      {{ range first 2 (where .Site.RegularPages "Section" "projects") }}
+      <a href="{{ .Permalink }}" class="project-showcase-card">
+        <div class="project-showcase-image">
+          <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" loading="lazy">
+        </div>
+        <div class="project-showcase-content">
+          <h3>{{ .Title }}</h3>
+          <p class="project-showcase-location">{{ .Params.location }}</p>
+          <p class="project-showcase-summary">{{ .Params.summary }}</p>
+          <span class="project-showcase-link">View Project →</span>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    <div class="section-footer">
+      <a href="/projects/" class="btn btn-secondary">View All Projects</a>
+    </div>
+  </div>
+</section>
+
 <!-- Testimonials Section -->
 <section class="testimonials-section">
   <div class="container">
