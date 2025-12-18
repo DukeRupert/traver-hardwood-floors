@@ -5,6 +5,7 @@ title = 'Traver Hardwood Floors'
 [params]
   description = 'Professional hardwood floor installation, sanding, finishing, repair and restoration serving Helena, Bozeman, Butte, Great Falls, and all of Montana. Family-owned with 18 years of expertise.'
   tagline = 'Crafting Timeless Beauty One Floor at a Time'
+  turnstileSiteKey = '0x4AAAAAACHajsaw-K1k5996'
   phone = '406-451-2282'
   phoneFormatted = '(406) 451-2282'
   phoneTel = '+1-406-451-2282'

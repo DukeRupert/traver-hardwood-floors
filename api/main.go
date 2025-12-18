@@ -11,10 +11,19 @@ import (
 )
 
 type ContactForm struct {
-	Name    string `json:"name"`
-	Email   string `json:"email"`
-	Phone   string `json:"phone"`
-	Message string `json:"message"`
+	Name           string `json:"name"`
+	Email          string `json:"email"`
+	Phone          string `json:"phone"`
+	Message        string `json:"message"`
+	Honeypot       string `json:"botField"`
+	TurnstileToken string `json:"turnstileToken"`
+}
+
+type TurnstileResponse struct {
+	Success     bool     `json:"success"`
+	ErrorCodes  []string `json:"error-codes,omitempty"`
+	ChallengeTs string   `json:"challenge_ts,omitempty"`
+	Hostname    string   `json:"hostname,omitempty"`
 }
 
 type PostmarkEmail struct {
@@ -27,20 +36,22 @@ type PostmarkEmail struct {
 }
 
 type Config struct {
-	PostmarkToken string
-	FromEmail     string
-	ToEmail       string
-	AllowedOrigin string
-	Port          string
+	PostmarkToken   string
+	FromEmail       string
+	ToEmail         string
+	AllowedOrigin   string
+	Port            string
+	TurnstileSecret string
 }
 
 func loadConfig() Config {
 	return Config{
-		PostmarkToken: getEnv("POSTMARK_TOKEN", ""),
-		FromEmail:     getEnv("FROM_EMAIL", "noreply@traverhardwoodfloors.com"),
-		ToEmail:       getEnv("TO_EMAIL", "chris@traverhardwoodfloors.com"),
-		AllowedOrigin: getEnv("ALLOWED_ORIGIN", "https://www.traverhardwoodfloors.com"),
-		Port:          getEnv("PORT", "8080"),
+		PostmarkToken:   getEnv("POSTMARK_TOKEN", ""),
+		FromEmail:       getEnv("FROM_EMAIL", "noreply@traverhardwoodfloors.com"),
+		ToEmail:         getEnv("TO_EMAIL", "chris@traverhardwoodfloors.com"),
+		AllowedOrigin:   getEnv("ALLOWED_ORIGIN", "https://www.traverhardwoodfloors.com"),
+		Port:            getEnv("PORT", "8080"),
+		TurnstileSecret: getEnv("TURNSTILE_SECRET", ""),
 	}
 }
 
@@ -56,6 +67,9 @@ func main() {
 
 	if config.PostmarkToken == "" {
 		log.Fatal("POSTMARK_TOKEN environment variable is required")
+	}
+	if config.TurnstileSecret == "" {
+		log.Fatal("TURNSTILE_SECRET environment variable is required")
 	}
 
 	http.HandleFunc("/api/contact", corsMiddleware(config.AllowedOrigin, contactHandler(config)))
@@ -104,6 +118,29 @@ func contactHandler(config Config) http.HandlerFunc {
 			return
 		}
 
+		// Honeypot check - if filled, silently reject (bot detected)
+		if form.Honeypot != "" {
+			log.Printf("Honeypot triggered, rejecting submission")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			json.NewEncoder(w).Encode(map[string]string{
+				"status":  "success",
+				"message": "Thank you for your message. We'll be in touch soon!",
+			})
+			return
+		}
+
+		// Verify Turnstile token
+		if form.TurnstileToken == "" {
+			http.Error(w, "Security verification required", http.StatusBadRequest)
+			return
+		}
+		if !verifyTurnstile(config.TurnstileSecret, form.TurnstileToken, r.RemoteAddr) {
+			log.Printf("Turnstile verification failed")
+			http.Error(w, "Security verification failed", http.StatusForbidden)
+			return
+		}
+
 		// Validate required fields
 		if form.Name == "" || form.Email == "" || form.Message == "" {
 			http.Error(w, "Name, email, and message are required", http.StatusBadRequest)
@@ -134,6 +171,31 @@ func contactHandler(config Config) http.HandlerFunc {
 			"message": "Thank you for your message. We'll be in touch soon!",
 		})
 	}
+}
+
+func verifyTurnstile(secret, token, remoteIP string) bool {
+	data := fmt.Sprintf("secret=%s&response=%s&remoteip=%s", secret, token, remoteIP)
+	resp, err := http.Post(
+		"https://challenges.cloudflare.com/turnstile/v0/siteverify",
+		"application/x-www-form-urlencoded",
+		strings.NewReader(data),
+	)
+	if err != nil {
+		log.Printf("Turnstile API error: %v", err)
+		return false
+	}
+	defer resp.Body.Close()
+
+	var result TurnstileResponse
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		log.Printf("Turnstile response parse error: %v", err)
+		return false
+	}
+
+	if !result.Success {
+		log.Printf("Turnstile verification failed: %v", result.ErrorCodes)
+	}
+	return result.Success
 }
 
 func sendEmail(config Config, form ContactForm) error {
