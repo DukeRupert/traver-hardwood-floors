@@ -16,12 +16,12 @@ features:
   - title: "Water-Based Options"
     description: "Chris is an expert in water-based finishes—low odor, quick drying, and environmentally friendly."
 gallery:
-  - image: "/images/gallery/sanding-1.jpg"
+  - image: "/images/sanding_1.jpg"
     alt: "Antique hardwood with red stain removal"
-  - image: "/images/gallery/sanding-2.jpg"
+  - image: "/images/sanding_2.jpg"
     alt: "Floor after old finish removal"
-  - image: "/images/gallery/sanding-3.jpg"
+  - image: "/images/sanding_3.jpg"
     alt: "Restoration highlighting craftsmanship"
-  - image: "/images/gallery/sanding-4.jpg"
+  - image: "/images/sanding_4.jpg"
     alt: "Before and after transformation"
 ---
