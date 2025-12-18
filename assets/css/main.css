@@ -999,6 +999,17 @@ section {
   color: var(--color-primary);
 }
 
+.social-links .nextdoor-link {
+  width: 72px;
+  height: 24px;
+}
+
+.social-links .nextdoor-link svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .footer-section h4 {
   font-family: var(--font-sans);
   font-size: 0.875rem;
