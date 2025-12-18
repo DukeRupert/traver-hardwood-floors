@@ -1,0 +1,101 @@
+{{ define "head" }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+{{ end }}
+
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container">
+    <p class="hero-breadcrumb"><a href="/projects/">Our Work</a> / {{ .Title }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="hero-subtitle">{{ .Params.location }}</p>
+  </div>
+</section>
+
+{{ with .Params.featured_image }}
+<section class="project-hero-image">
+  <div class="container">
+    <img src="{{ . }}" alt="Featured project image">
+  </div>
+</section>
+{{ end }}
+
+<section class="project-content">
+  <div class="container">
+    <div class="project-intro">
+      {{ if .Params.services }}
+      <div class="project-services">
+        {{ range .Params.services }}
+        <span class="service-tag">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <div class="project-description">
+        {{ .Content }}
+      </div>
+    </div>
+
+    {{ if .Params.before_image }}
+    <div class="before-after">
+      <h2>The Transformation</h2>
+      <div class="before-after-grid">
+        <div class="before-image">
+          <span class="image-label">Before</span>
+          <img src="{{ .Params.before_image }}" alt="Before restoration">
+        </div>
+        <div class="after-image">
+          <span class="image-label">After</span>
+          <img src="{{ index .Params.gallery 0 }}" alt="After restoration">
+        </div>
+      </div>
+    </div>
+    {{ end }}
+
+    {{ if .Params.gallery }}
+    <div class="project-gallery">
+      <h2>Project Gallery</h2>
+      <div class="gallery-grid">
+        {{ range .Params.gallery }}
+        <a href="{{ . }}" class="gallery-item glightbox" data-gallery="project">
+          <img src="{{ . }}" alt="Project photo" loading="lazy">
+        </a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<section class="project-nav">
+  <div class="container">
+    <div class="project-nav-links">
+      {{ with .PrevInSection }}
+      <a href="{{ .Permalink }}" class="project-nav-link prev">
+        <span class="nav-label">← Previous Project</span>
+        <span class="nav-title">{{ .Title }}</span>
+      </a>
+      {{ end }}
+      {{ with .NextInSection }}
+      <a href="{{ .Permalink }}" class="project-nav-link next">
+        <span class="nav-label">Next Project →</span>
+        <span class="nav-title">{{ .Title }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ partial "cta-section.html" . }}
+{{ end }}
+
+{{ define "scripts" }}
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: true
+  });
+</script>
+{{ end }}

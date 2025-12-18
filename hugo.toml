@@ -21,13 +21,17 @@ title = 'Traver Hardwood Floors'
     url = '/services/'
     weight = 1
   [[menu.main]]
+    name = 'Our Work'
+    url = '/projects/'
+    weight = 2
+  [[menu.main]]
     name = 'About Us'
     url = '/about-us/'
-    weight = 2
+    weight = 3
   [[menu.main]]
     name = 'Contact Us'
     url = '/contact-us/'
-    weight = 3
+    weight = 4
 
   [[menu.services]]
     name = 'Installation'
