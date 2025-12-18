@@ -1,6 +1,6 @@
 ---
 title: "Installation"
-description: "Professional hardwood floor installation services in Helena, Montana. Expert installation on concrete slabs and traditional subfloors."
+description: "Professional hardwood floor installation in Helena, Bozeman, Butte, and across Montana. Expert installation on concrete slabs and traditional subfloors."
 type: "services"
 headline: "Professional Installation"
 subtitle: "Your Dream Floor"

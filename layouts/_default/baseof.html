@@ -6,6 +6,28 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <title>{{ if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:image" content="{{ if .Params.featured_image }}{{ .Params.featured_image | absURL }}{{ else }}{{ "images/og-image.jpg" | absURL }}{{ end }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="twitter:image" content="{{ if .Params.featured_image }}{{ .Params.featured_image | absURL }}{{ else }}{{ "images/og-image.jpg" | absURL }}{{ end }}">
+
+  <!-- Geo Tags for Local SEO -->
+  <meta name="geo.region" content="US-MT">
+  <meta name="geo.placename" content="Helena, Montana">
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
@@ -37,6 +59,99 @@
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=876484957710949&ev=PageView&noscript=1"/>
   </noscript>
+
+  <!-- LocalBusiness Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "{{ .Site.Title }}",
+    "description": "{{ .Site.Params.description }}",
+    "url": "{{ .Site.BaseURL }}",
+    "telephone": "{{ .Site.Params.phoneTel }}",
+    "image": "{{ "images/og-image.jpg" | absURL }}",
+    "logo": "{{ "images/logo.png" | absURL }}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Helena",
+      "addressRegion": "MT",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "46.5958",
+      "longitude": "-112.0270"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Helena, Montana"
+      },
+      {
+        "@type": "City",
+        "name": "Bozeman, Montana"
+      },
+      {
+        "@type": "City",
+        "name": "Butte, Montana"
+      },
+      {
+        "@type": "City",
+        "name": "Great Falls, Montana"
+      },
+      {
+        "@type": "City",
+        "name": "Missoula, Montana"
+      }
+    ],
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    "sameAs": [
+      "{{ .Site.Params.social.facebook }}",
+      "{{ .Site.Params.social.instagram }}",
+      "{{ .Site.Params.social.nextdoor }}"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Hardwood Flooring Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hardwood Floor Installation"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hardwood Floor Sanding & Finishing"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hardwood Floor Repair & Restoration"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Custom Hardwood Stairs"
+          }
+        }
+      ]
+    }
+  }
+  </script>
 
   {{ block "head" . }}{{ end }}
 </head>

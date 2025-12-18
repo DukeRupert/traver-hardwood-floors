@@ -1,6 +1,6 @@
 ---
 title: "Sanding & Finishing"
-description: "Expert hardwood floor sanding and finishing services in Helena, Montana. Revitalize your floors with our professional refinishing process."
+description: "Expert hardwood floor sanding and refinishing in Helena, Bozeman, Butte, and across Montana. Revitalize your floors with our professional refinishing process."
 type: "services"
 headline: "Sanding & Finishing"
 subtitle: "Revitalize Your Floors"

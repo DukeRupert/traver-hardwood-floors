@@ -1,6 +1,6 @@
 ---
 title: "Stairs"
-description: "Custom hardwood staircase installation in Helena, Butte, and Bozeman, Montana. Transform your stairs into a stunning focal point."
+description: "Custom hardwood staircase installation in Helena, Bozeman, Butte, Great Falls, and across Montana. Transform your stairs into a stunning focal point."
 type: "services"
 headline: "Custom Stairs"
 subtitle: "Elegant & Durable"

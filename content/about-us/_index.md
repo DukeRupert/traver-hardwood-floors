@@ -1,5 +1,5 @@
 ---
 title: "About Us"
-description: "Learn about Traver Hardwood Floors - a family-owned business with 18 years of hardwood flooring expertise in Helena, Montana."
+description: "Traver Hardwood Floors - a family-owned business with 18 years of hardwood flooring expertise serving Helena, Bozeman, Butte, and all of Montana."
 layout: "single"
 ---

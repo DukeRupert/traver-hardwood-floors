@@ -1,6 +1,6 @@
 ---
 title: "Home"
-description: "Traver Hardwood Floors - Professional hardwood floor installation, sanding, finishing, and restoration in Helena, Montana."
+description: "Traver Hardwood Floors - Professional hardwood floor installation, sanding, finishing, and restoration serving Helena, Bozeman, Butte, Great Falls, and all of Montana."
 hero:
   headline: "Crafting Timeless Beauty One Floor at a Time"
   subheadline: "Professional hardwood floor installation, sanding, finishing, and restoration in Helena, Montana."

@@ -1,0 +1,8 @@
+# robots.txt for Traver Hardwood Floors
+# https://www.traverhardwoodfloors.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.traverhardwoodfloors.com/sitemap.xml
