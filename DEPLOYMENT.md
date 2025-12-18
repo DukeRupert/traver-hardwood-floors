@@ -17,6 +17,18 @@ Internet → Caddy (HTTPS) → Docker Container (HTTP:8082)
                                 └── Go API (contact form)
 ```
 
+## CI/CD Setup (GitHub Actions)
+
+Add these secrets to your GitHub repository (Settings → Secrets → Actions):
+
+| Secret | Description |
+|--------|-------------|
+| `DOCKERHUB_USERNAME` | Your Docker Hub username |
+| `DOCKERHUB_TOKEN` | Docker Hub access token |
+| `VPS_HOST` | VPS IP address or hostname |
+| `VPS_USER` | SSH username on VPS |
+| `VPS_SSH_KEY` | Private SSH key for VPS access |
+
 ## Deployment Steps
 
 ### 1. Clone the Repository
@@ -36,6 +48,9 @@ cp .env.example .env
 Edit `.env` with your values:
 
 ```bash
+# Docker image to pull
+DOCKER_IMAGE=dukerupert/traver-hardwood-floors:latest
+
 # Port the container listens on (for outer reverse proxy)
 LISTEN_PORT=8082
 
@@ -94,12 +109,18 @@ curl -I https://www.traverhardwoodfloors.com
 
 ## Updating the Site
 
-To deploy updates:
+Deployments are automatic via GitHub Actions. When you push to `master`:
+
+1. GitHub Actions builds the Docker image
+2. Pushes to Docker Hub
+3. SSHs into VPS and pulls the new image
+
+For manual updates:
 
 ```bash
 cd /opt/traver-hardwood-floors
-git pull
-docker compose up -d --build
+docker compose pull
+docker compose up -d
 ```
 
 ## Monitoring
