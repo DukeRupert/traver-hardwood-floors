@@ -1,3 +1,7 @@
+{{ define "head" }}
+<link rel="stylesheet" href="/vendor/glightbox/glightbox.min.css">
+{{ end }}
+
 {{ define "main" }}
 <section class="page-hero" {{ with .Params.hero_image }}style="background-image: linear-gradient(var(--color-overlay), var(--color-overlay)), url('{{ . }}'); background-size: cover; background-position: center;"{{ end }}>
   <div class="container">
@@ -46,9 +50,9 @@
     </div>
     <div class="gallery-grid">
       {{ range .Params.gallery }}
-      <div class="gallery-item">
-        <img src="{{ .image }}" alt="{{ .alt }}">
-      </div>
+      <a href="{{ .image }}" class="gallery-item glightbox" data-gallery="service">
+        <img src="{{ .image }}" alt="{{ .alt }}" loading="lazy">
+      </a>
       {{ end }}
     </div>
   </div>
@@ -64,4 +68,15 @@
 {{ end }}
 
 {{ partial "cta-section.html" . }}
+{{ end }}
+
+{{ define "scripts" }}
+<script src="/vendor/glightbox/glightbox.min.js"></script>
+<script>
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true
+  });
+</script>
 {{ end }}
