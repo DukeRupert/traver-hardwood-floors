@@ -9,4 +9,5 @@ services:
       - FROM_EMAIL=${FROM_EMAIL:-noreply@traverhardwoodfloors.com}
       - TO_EMAIL=${TO_EMAIL:-chris@traverhardwoodfloors.com}
       - ALLOWED_ORIGIN=${ALLOWED_ORIGIN:-https://www.traverhardwoodfloors.com}
+      - TURNSTILE_SECRET=${TURNSTILE_SECRET}
     restart: unless-stopped

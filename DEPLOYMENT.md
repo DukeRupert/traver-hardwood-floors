@@ -46,6 +46,9 @@ TO_EMAIL=chris@traverhardwoodfloors.com
 
 # CORS - must match your public domain
 ALLOWED_ORIGIN=https://www.traverhardwoodfloors.com
+
+# Cloudflare Turnstile (spam protection)
+TURNSTILE_SECRET=your-turnstile-secret-key
 ```
 
 ### 3. Configure Outer Caddy
@@ -162,4 +165,4 @@ cp .env .env.backup
 - The `.env` file contains secrets - ensure it's not committed to Git
 - The container runs as non-root by default (Caddy's default)
 - CORS is configured to only allow requests from the specified origin
-- The contact form includes honeypot spam protection
+- The contact form includes Cloudflare Turnstile and honeypot spam protection
