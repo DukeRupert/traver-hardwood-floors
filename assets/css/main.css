@@ -150,7 +150,8 @@ h4 { font-size: 1.125rem; }
   font-weight: 500;
   text-decoration: none;
   border: 2px solid transparent;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+  letter-spacing: 0.05em;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -409,7 +410,13 @@ h4 { font-size: 1.125rem; }
    Sections
    =========================== */
 section {
-  padding: var(--spacing-3xl) 0;
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 6rem 0;
+  }
 }
 
 .section-header {
@@ -490,6 +497,7 @@ section {
 
 .service-card {
   background-color: var(--color-bg);
+  border: 1px solid #E5E7EB;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 4px 20px var(--color-shadow);
@@ -1108,14 +1116,13 @@ section {
 
 .feature-icon {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-full);
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #2C1810;
 }
 
 .feature-item h4 {
@@ -1318,12 +1325,14 @@ section {
   position: absolute;
   top: var(--spacing-md);
   left: var(--spacing-md);
-  background-color: var(--color-primary);
+  background-color: rgba(44, 24, 16, 0.80);
   color: white;
-  padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: var(--radius-full);
-  font-size: 0.875rem;
-  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Project Gallery */
@@ -1415,12 +1424,12 @@ section {
    Focus Rings
    =========================== */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #CEB29D;
   outline-offset: 2px;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--color-primary-dark);
+  outline: 2px solid #CEB29D;
   outline-offset: 2px;
 }
 
@@ -1452,7 +1461,7 @@ section {
 }
 
 .service-card-image::after {
-  content: "View Service";
+  content: "See How It Works";
   position: absolute;
   inset: 0;
   display: flex;
