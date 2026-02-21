@@ -165,6 +165,7 @@
     function updateThemeIcon(theme) {
       const sunIcon = document.getElementById('sun-icon');
       const moonIcon = document.getElementById('moon-icon');
+      const toggle = document.getElementById('theme-toggle');
       if (sunIcon && moonIcon) {
         if (theme === 'dark') {
           sunIcon.style.display = 'block';
@@ -173,6 +174,9 @@
           sunIcon.style.display = 'none';
           moonIcon.style.display = 'block';
         }
+      }
+      if (toggle) {
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
       }
     }
 
@@ -220,7 +224,7 @@
     fbq('track', 'PageView');
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=876484957710949&ev=PageView&noscript=1"/>
+    <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=876484957710949&ev=PageView&noscript=1"/>
   </noscript>
 
   {{ block "scripts" . }}{{ end }}

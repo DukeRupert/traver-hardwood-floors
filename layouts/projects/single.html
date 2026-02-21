@@ -5,7 +5,9 @@
 {{ define "main" }}
 <section class="page-hero">
   <div class="container">
-    <p class="hero-breadcrumb"><a href="/projects/">Our Work</a> / {{ .Title }}</p>
+    <nav aria-label="Breadcrumb" class="hero-breadcrumb">
+      <a href="/projects/">Our Work</a> / <span aria-current="page">{{ .Title }}</span>
+    </nav>
     <h1>{{ .Title }}</h1>
     <p class="hero-subtitle">{{ .Params.location }}</p>
   </div>
