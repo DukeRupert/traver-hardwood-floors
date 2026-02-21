@@ -2,7 +2,7 @@
 title: "Home"
 description: "Traver Hardwood Floors - Professional hardwood floor installation, sanding, finishing, and restoration serving Helena, Bozeman, Butte, Great Falls, and all of Montana."
 hero:
-  headline: "Northwest Wood Floor of the Year. Helena, Butte & Bozeman."
+  headline: "18 Years in Every Board. Helena, Butte & Bozeman."
   subheadline: "Whether you're restoring a century-old floor or choosing the perfect hardwood for your new build, we bring 18 years of expertise to every board."
 testimonials:
   - name: "Sarah M."
