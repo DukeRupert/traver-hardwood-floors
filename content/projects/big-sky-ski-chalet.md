@@ -3,20 +3,20 @@ title: "Big Sky Ski Chalet"
 date: 2024-03-10
 location: "Big Sky, MT"
 summary: "A stunning Nordic-inspired finish using whitener additive for a bright, modern mountain aesthetic"
-featured_image: "/images/projects/big_sky_ski_chalet_1.jpg"
+featured_image: "/images/projects/big_sky_ski_chalet_1.webp"
 services:
   - "Sanding & Finishing"
   - "Custom Finish"
 gallery:
-  - "/images/projects/big_sky_ski_chalet_1.jpg"
-  - "/images/projects/big_sky_ski_chalet_2.jpg"
-  - "/images/projects/big_sky_ski_chalet_3.jpg"
-  - "/images/projects/big_sky_ski_chalet_4.jpg"
-  - "/images/projects/big_sky_ski_chalet_5.jpg"
-  - "/images/projects/big_sky_ski_chalet_6.jpg"
-  - "/images/projects/big_sky_ski_chalet_7.jpg"
-  - "/images/projects/big_sky_ski_chalet_8.jpg"
-  - "/images/projects/big_sky_ski_chalet_9.jpg"
+  - "/images/projects/big_sky_ski_chalet_1.webp"
+  - "/images/projects/big_sky_ski_chalet_2.webp"
+  - "/images/projects/big_sky_ski_chalet_3.webp"
+  - "/images/projects/big_sky_ski_chalet_4.webp"
+  - "/images/projects/big_sky_ski_chalet_5.webp"
+  - "/images/projects/big_sky_ski_chalet_6.webp"
+  - "/images/projects/big_sky_ski_chalet_7.webp"
+  - "/images/projects/big_sky_ski_chalet_8.webp"
+  - "/images/projects/big_sky_ski_chalet_9.webp"
 ---
 
 This Big Sky ski chalet called for something special—a light, airy aesthetic that would complement the stunning mountain views and bring a sense of Scandinavian elegance to the space.

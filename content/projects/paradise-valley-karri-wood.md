@@ -3,15 +3,15 @@ title: "Paradise Valley Reclaimed Karri Wood"
 date: 2024-01-15
 location: "Paradise Valley, MT"
 summary: "Breathing new life into reclaimed Australian Karri wood flooring"
-featured_image: "/images/projects/karri_wood_after_1.jpg"
-before_image: "/images/projects/karri_wood_before.jpg"
+featured_image: "/images/projects/karri_wood_after_1.webp"
+before_image: "/images/projects/karri_wood_before.webp"
 services:
   - "Sanding & Refinishing"
   - "Restoration"
 gallery:
-  - "/images/projects/karri_wood_after_1.jpg"
-  - "/images/projects/karri_wood_after_2.jpg"
-  - "/images/projects/karri_wood_after_3.jpg"
+  - "/images/projects/karri_wood_after_1.webp"
+  - "/images/projects/karri_wood_after_2.webp"
+  - "/images/projects/karri_wood_after_3.webp"
 ---
 
 This stunning Paradise Valley home features reclaimed Karri wood flooring with a rich history. Karri is a magnificent hardwood native to Western Australia, prized for its exceptional durability and beautiful grain patterns.
