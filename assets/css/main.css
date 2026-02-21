@@ -4,15 +4,15 @@
 :root {
   /* Light theme - Wood palette */
   --color-bg: #faf6f0;
-  --color-bg-secondary: #f0e6d5;
-  --color-bg-tertiary: #e0cba7;
+  --color-bg-secondary: #F5EDE5;
+  --color-bg-tertiary: #E8D5C4;
   --color-text: #341a14;
   --color-text-secondary: #5e3329;
   --color-text-muted: #713d2f;
-  --color-primary: #a4613b;
-  --color-primary-dark: #8c4c35;
-  --color-primary-light: #ba7b46;
-  --color-accent: #c5955a;
+  --color-primary: #2C1810;
+  --color-primary-dark: #3D2A1E;
+  --color-primary-light: #5A3D2E;
+  --color-accent: #8B6914;
   --color-border: #e0cba7;
   --color-shadow: rgba(52, 26, 20, 0.12);
   --color-overlay: rgba(52, 26, 20, 0.65);
@@ -638,7 +638,7 @@ section {
 }
 
 .testimonial-card {
-  background-color: var(--color-bg-secondary);
+  background-color: #F5EDE5;
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
 }
