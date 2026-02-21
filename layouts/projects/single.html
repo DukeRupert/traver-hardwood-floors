@@ -14,7 +14,7 @@
 {{ with .Params.featured_image }}
 <section class="project-hero-image">
   <div class="container">
-    <img src="{{ . }}" alt="Featured project image">
+    <img src="{{ . }}" alt="{{ $.Title }} — {{ $.Params.location }}">
   </div>
 </section>
 {{ end }}
@@ -57,7 +57,7 @@
       <div class="gallery-grid">
         {{ range .Params.gallery }}
         <a href="{{ . }}" class="gallery-item glightbox" data-gallery="project">
-          <img src="{{ . }}" alt="Project photo" loading="lazy">
+          <img src="{{ . }}" alt="{{ $.Title }} — hardwood flooring, {{ $.Params.location }}" loading="lazy">
         </a>
         {{ end }}
       </div>

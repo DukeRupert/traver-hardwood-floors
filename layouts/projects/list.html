@@ -12,10 +12,10 @@
       {{ range .Pages.ByDate.Reverse }}
       <a href="{{ .Permalink }}" class="project-card">
         <div class="project-card-image">
-          <img src="{{ .Params.featured_image }}" alt="{{ .Title }}">
+          <img src="{{ .Params.featured_image }}" alt="{{ .Title }} — hardwood flooring project, {{ .Params.location }}">
         </div>
         <div class="project-card-content">
-          <h2>{{ .Title }}</h2>
+          <h3>{{ .Title }}</h3>
           <p class="project-location">{{ .Params.location }}</p>
           <p class="project-summary">{{ .Params.summary }}</p>
           <span class="project-link">View Project →</span>
