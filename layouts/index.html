@@ -1,3 +1,34 @@
+{{ define "head" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ .Site.Title }}",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "{{ len .Params.testimonials }}"
+  },
+  "review": [
+    {{ range $i, $t := .Params.testimonials }}{{ if $i }},{{ end }}
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "{{ $t.name }}"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "{{ $t.quote }}"
+    }
+    {{ end }}
+  ]
+}
+</script>
+{{ end }}
+
 {{ define "main" }}
 <!-- Hero Section -->
 <section class="hero">

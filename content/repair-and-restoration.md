@@ -1,6 +1,7 @@
 ---
 title: "Repair & Restoration"
 description: "Historic floor restoration and hardwood repair in Helena, Bozeman, Butte, and across Montana. We restore water-damaged and worn floors to their original beauty."
+featured_image: "/images/repair_1.jpg"
 type: "services"
 headline: "Repair & Restoration"
 subtitle: "Preserve Your History"

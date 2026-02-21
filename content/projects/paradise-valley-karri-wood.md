@@ -1,5 +1,6 @@
 ---
 title: "Paradise Valley Reclaimed Karri Wood"
+description: "Reclaimed Australian Karri wood floor restoration in Paradise Valley, MT. Before-and-after transformation by Traver Hardwood Floors."
 date: 2024-01-15
 location: "Paradise Valley, MT"
 summary: "Breathing new life into reclaimed Australian Karri wood flooring"

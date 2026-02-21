@@ -15,6 +15,7 @@ title = 'Traver Hardwood Floors'
     facebook = 'https://www.facebook.com/traverhardwoodfloors'
     instagram = 'https://www.instagram.com/traverhardwoodfloors'
     nextdoor = 'https://nextdoor.com/pages/traver-hardwood-floors-helena-mt'
+    google = 'https://www.google.com/maps/place/Traver+Hardwood+Floors/@46.1302274,-112.193272,9z/'
 
 [menu]
   [[menu.main]]

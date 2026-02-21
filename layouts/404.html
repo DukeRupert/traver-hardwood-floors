@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container">
+    <h1>Page Not Found</h1>
+    <p class="hero-subtitle">Sorry, the page you're looking for doesn't exist or has been moved.</p>
+  </div>
+</section>
+
+<section class="error-page">
+  <div class="container">
+    <p>Here are some helpful links to get you back on track:</p>
+    <ul class="error-links">
+      <li><a href="/">Homepage</a></li>
+      <li><a href="/services/">Our Services</a></li>
+      <li><a href="/projects/">Our Work</a></li>
+      <li><a href="/contact-us/">Contact Us</a></li>
+    </ul>
+    <div class="error-cta">
+      <a href="/contact-us/" class="btn btn-primary">Get a Free Estimate</a>
+      <a href="tel:{{ .Site.Params.phoneTel }}" class="btn btn-secondary">Call {{ .Site.Params.phoneFormatted }}</a>
+    </div>
+  </div>
+</section>
+{{ end }}

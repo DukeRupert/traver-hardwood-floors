@@ -1,5 +1,6 @@
 ---
 title: "Big Sky Ski Chalet"
+description: "Nordic-inspired whitened hardwood floor finish in a Big Sky, MT ski chalet. Custom sanding & finishing with whitener additive by Traver Hardwood Floors."
 date: 2024-03-10
 location: "Big Sky, MT"
 summary: "A stunning Nordic-inspired finish using whitener additive for a bright, modern mountain aesthetic"

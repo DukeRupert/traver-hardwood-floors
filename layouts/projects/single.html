@@ -1,5 +1,30 @@
 {{ define "head" }}
 <link rel="stylesheet" href="/vendor/glightbox/glightbox.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ .Site.BaseURL }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Our Work",
+      "item": "{{ "projects/" | absURL }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ .Title }}"
+    }
+  ]
+}
+</script>
 {{ end }}
 
 {{ define "main" }}

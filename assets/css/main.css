@@ -1539,6 +1539,42 @@ section {
 }
 
 /* ===========================
+   404 Error Page
+   =========================== */
+.error-page {
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.error-page p {
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.error-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-lg);
+}
+
+.error-links a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.error-cta {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ===========================
    Reduced Motion
    =========================== */
 @media (prefers-reduced-motion: reduce) {

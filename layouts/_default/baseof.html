@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-  <title>{{ if .IsHome }}Hardwood Floor Installation & Refinishing | Helena, MT | Traver Hardwood Floors{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}</title>
+  <title>{{ if .IsHome }}Hardwood Flooring Helena, MT | Traver Hardwood Floors{{ else if eq .Section "projects" }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}</title>
 
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ .Permalink }}">
@@ -12,7 +12,7 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="{{ if .IsHome }}Hardwood Floor Installation & Refinishing | Helena, MT | Traver Hardwood Floors{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}">
+  <meta property="og:title" content="{{ if .IsHome }}Hardwood Flooring Helena, MT | Traver Hardwood Floors{{ else if eq .Section "projects" }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}">
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta property="og:image" content="{{ if .Params.featured_image }}{{ .Params.featured_image | absURL }}{{ else }}{{ "images/og-image.jpg" | absURL }}{{ end }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
@@ -20,7 +20,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ if .IsHome }}Hardwood Floor Installation & Refinishing | Helena, MT | Traver Hardwood Floors{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}">
+  <meta name="twitter:title" content="{{ if .IsHome }}Hardwood Flooring Helena, MT | Traver Hardwood Floors{{ else if eq .Section "projects" }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}">
   <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta name="twitter:image" content="{{ if .Params.featured_image }}{{ .Params.featured_image | absURL }}{{ else }}{{ "images/og-image.jpg" | absURL }}{{ end }}">
 
@@ -102,7 +102,8 @@
     "sameAs": [
       "{{ .Site.Params.social.facebook }}",
       "{{ .Site.Params.social.instagram }}",
-      "{{ .Site.Params.social.nextdoor }}"
+      "{{ .Site.Params.social.nextdoor }}",
+      "{{ .Site.Params.social.google }}"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
