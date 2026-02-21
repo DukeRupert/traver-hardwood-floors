@@ -754,6 +754,32 @@ section {
   border-color: #FFFFFF;
 }
 
+[data-theme="dark"] .cta-section {
+  background-color: #2C1810;
+}
+
+[data-theme="dark"] .btn-cta-primary {
+  background-color: #CEB29D;
+  color: #2C1810;
+  border-color: #CEB29D;
+}
+
+[data-theme="dark"] .btn-cta-primary:hover {
+  background-color: #E8D5C4;
+  border-color: #E8D5C4;
+  color: #2C1810;
+}
+
+[data-theme="dark"] .btn-cta-secondary {
+  color: #CEB29D;
+  border-color: #CEB29D;
+}
+
+[data-theme="dark"] .btn-cta-secondary:hover {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
 /* ===========================
    Gallery
    =========================== */
