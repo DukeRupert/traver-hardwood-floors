@@ -4,7 +4,7 @@ description: "Historic floor restoration and hardwood repair in Helena, Bozeman,
 type: "services"
 headline: "Repair & Restoration"
 subtitle: "Preserve Your History"
-intro: "Your hardwood floors are more than just a surface—they're a connection to the past. Whether your floors have suffered water damage, fire damage, layout changes, or deep scratches, we have the expertise to bring them back to life. We specialize in handling floors hidden under carpet and severely damaged surfaces."
+intro: "Whether your floors have suffered water damage, fire damage, or decades of neglect, we bring them back to life. We specialize in floors hidden under carpet, severely damaged surfaces, and historic preservation."
 features_title: "Restoration Services"
 features:
   - title: "Water Damage Repair"

@@ -1,9 +1,9 @@
-baseURL = 'https://www.thf.fireflysoftware.dev/'
+baseURL = 'https://www.traverhardwoodfloors.com/'
 languageCode = 'en-us'
 title = 'Traver Hardwood Floors'
 
 [params]
-  description = 'Professional hardwood floor installation, sanding, finishing, repair and restoration serving Helena, Bozeman, Butte, Great Falls, and all of Montana. Family-owned with 18 years of expertise.'
+  description = 'Award-winning hardwood floor installation, refinishing & restoration in Helena, Butte & Bozeman. 6th generation Montana craftsman. Free estimates.'
   tagline = 'Crafting Timeless Beauty One Floor at a Time'
   turnstileSiteKey = '0x4AAAAAACHajsaw-K1k5996'
   phone = '406-451-2282'

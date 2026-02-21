@@ -6,13 +6,13 @@
     <h1>{{ .Params.hero.headline | default "Crafting Timeless Beauty One Floor at a Time" }}</h1>
     <p>{{ .Params.hero.subheadline | default "Professional hardwood floor installation, sanding, finishing, and restoration in Helena, Montana." }}</p>
     <div class="hero-buttons">
-      <a href="tel:{{ .Site.Params.phoneTel }}" class="btn btn-primary">
+      <a href="/contact-us/" class="btn btn-primary">Get a Free Estimate</a>
+      <a href="tel:{{ .Site.Params.phoneTel }}" class="btn btn-white">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
         </svg>
-        Call Us
+        Call {{ .Site.Params.phoneFormatted }}
       </a>
-      <a href="/contact-us/" class="btn btn-white">Get a Free Estimate</a>
     </div>
   </div>
 </section>
@@ -25,10 +25,10 @@
         <img src="/images/20190608_134726.jpg" alt="Custom hardwood floor installation in Montana home">
       </div>
       <div class="feature-content">
-        <h2>Montana Inspired Designs</h2>
+        <h2>Built for Montana Homes</h2>
         <p>Every home tells a story, and your floors should be part of that narrative. Our custom hardwood installations are crafted to complement Montana's unique character—from rustic mountain retreats to modern family homes.</p>
         <p>We work with you to select the perfect wood species, stain colors, and finishes that match your vision and lifestyle.</p>
-        <a href="/installation/" class="btn btn-secondary">Learn More</a>
+        <a href="/installation/" class="btn btn-secondary">See How It Works</a>
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
         <h2>Family-Owned Tradition</h2>
         <p>Traver Hardwood Floors is built on generations of craftsmanship. As a sixth-generation Montana native, Chris Traver brings 18 years of hardwood flooring expertise to every project.</p>
         <p>When you choose us, you're not just getting a contractor—you're getting a family dedicated to excellence and standing behind every floor we install.</p>
-        <a href="/about-us/" class="btn btn-secondary">Meet Our Team</a>
+        <a href="/about-us/" class="btn btn-secondary">Meet Chris Traver</a>
       </div>
     </div>
   </div>
@@ -61,38 +61,38 @@
     <div class="services-grid">
       <a href="/installation/" class="service-card">
         <div class="service-card-image">
-          <img src="/images/installation.jpg" alt="Installation">
+          <img src="/images/installation.jpg" alt="Hardwood floor installation in a Montana home">
         </div>
         <div class="service-card-content">
           <h3>Installation</h3>
-          <p>Professional hardwood floor installation services.</p>
+          <p>From custom patterns to seamless transitions.</p>
         </div>
       </a>
       <a href="/sanding-and-finishing/" class="service-card">
         <div class="service-card-image">
-          <img src="/images/sanding_and_finishing.jpg" alt="Sanding & Finishing">
+          <img src="/images/sanding_and_finishing.jpg" alt="Professional hardwood floor sanding and refinishing">
         </div>
         <div class="service-card-content">
           <h3>Sanding & Finishing</h3>
-          <p>Expert refinishing to revitalize your floors.</p>
+          <p>Reveal the floor hiding under years of wear.</p>
         </div>
       </a>
       <a href="/repair-and-restoration/" class="service-card">
         <div class="service-card-image">
-          <img src="/images/repair_and_restoration.jpg" alt="Repair & Restoration">
+          <img src="/images/repair_and_restoration.jpg" alt="Historic hardwood floor repair and restoration">
         </div>
         <div class="service-card-content">
           <h3>Repair & Restoration</h3>
-          <p>Restore damaged and historic floors to beauty.</p>
+          <p>We see potential where others see problems.</p>
         </div>
       </a>
       <a href="/stairs/" class="service-card">
         <div class="service-card-image">
-          <img src="/images/stairs.jpg" alt="Stairs">
+          <img src="/images/stairs.jpg" alt="Custom hardwood staircase installation">
         </div>
         <div class="service-card-content">
           <h3>Stairs</h3>
-          <p>Custom hardwood staircase installations.</p>
+          <p>From rustic to modern, a stunning focal point.</p>
         </div>
       </a>
     </div>
@@ -138,7 +138,7 @@
       {{ range .Params.testimonials }}
       <div class="testimonial-card">
         <div class="testimonial-stars">
-          {{ range seq 5 }}★{{ end }}
+          <span role="img" aria-label="5 out of 5 stars">{{ range seq 5 }}★{{ end }}</span>
         </div>
         <p class="testimonial-text">"{{ .quote }}"</p>
         <div class="testimonial-author">

@@ -4,7 +4,7 @@ description: "Professional hardwood floor installation in Helena, Bozeman, Butte
 type: "services"
 headline: "Professional Installation"
 subtitle: "Your Dream Floor"
-intro: "We provide meticulous hardwood floor installation for a perfect finish. With years of experience, our team delivers flawless installations that enhance your space's beauty and value. Whether you're building new or renovating, we have the expertise to install on various surfaces including concrete slabs and traditional subfloors."
+intro: "From custom trapdoors to seamless stone-to-hardwood transitions, we handle the installations other companies won't touch. Whether you're building new or renovating, we install on concrete slabs, traditional subfloors, and everything in between."
 features_title: "Installation Excellence"
 features:
   - title: "Precision Craftsmanship"

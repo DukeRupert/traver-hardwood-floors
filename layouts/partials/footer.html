@@ -3,8 +3,14 @@
     <div class="footer-grid">
       <!-- Brand Column -->
       <div class="footer-brand">
-        <a href="/" class="footer-logo">Traver Hardwood Floors</a>
+        <a href="/" class="footer-logo">
+          <img src="/images/logo.png" alt="Traver Hardwood Floors" class="footer-logo-img">
+        </a>
         <p class="footer-tagline">{{ .Site.Params.tagline }}</p>
+        <div class="footer-trust">
+          <p>Northwest Wood Floor of the Year</p>
+          <p>18+ Years of Experience</p>
+        </div>
         <div class="social-links">
           {{ with .Site.Params.social.facebook }}
           <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -47,7 +53,7 @@
         <h4>Support</h4>
         <ul>
           <li><a href="/contact-us/">Contact Us</a></li>
-          <li><a href="tel:{{ .Site.Params.phoneTel }}">Call Us</a></li>
+          <li><a href="tel:{{ .Site.Params.phoneTel }}">Call {{ .Site.Params.phoneFormatted }}</a></li>
         </ul>
       </div>
 
@@ -63,7 +69,7 @@
 
     <div class="footer-bottom">
       <p>&copy; {{ now.Year }} Traver Hardwood Floors. All rights reserved.</p>
-      <p class="footer-location">{{ .Site.Params.location }}</p>
+      <p class="footer-location">Serving Helena, Butte & Bozeman, Montana</p>
     </div>
   </div>
 </footer>

@@ -4,7 +4,7 @@ description: "Expert hardwood floor sanding and refinishing in Helena, Bozeman, 
 type: "services"
 headline: "Sanding & Finishing"
 subtitle: "Revitalize Your Floors"
-intro: "Revitalize damaged hardwood floors with our expert refinishing process. Enjoy beautiful, refinished hardwood floors in just a few days. Our professional sanding removes years of wear while our premium finishes protect and beautify your floors for years to come."
+intro: "Reveal the floor hiding under years of wear. Our professional sanding removes deep scratches, gouges, and discoloration while premium finishes protect and beautify your floors for years to come."
 features_title: "Refinishing Benefits"
 features:
   - title: "Deep Scratch Removal"

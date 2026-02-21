@@ -4,7 +4,7 @@ description: "Custom hardwood staircase installation in Helena, Bozeman, Butte, 
 type: "services"
 headline: "Custom Stairs"
 subtitle: "Elegant & Durable"
-intro: "Custom-installed hardwood stairs that provide elegance and durability. Our installations enhance the visual appeal of your space and add a touch of timeless elegance. From rustic and rugged to modern and sleek, we transform staircases into breathtaking focal points."
+intro: "From rustic and rugged to modern and sleek, we transform staircases into stunning focal points. Custom-installed hardwood stairs built for both elegance and durability."
 features_title: "Staircase Excellence"
 features:
   - title: "Custom Designs"

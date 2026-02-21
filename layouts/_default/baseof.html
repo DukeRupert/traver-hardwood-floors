@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-  <title>{{ if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <title>{{ if .IsHome }}Hardwood Floor Installation & Refinishing | Helena, MT | Traver Hardwood Floors{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}</title>
 
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ .Permalink }}">
@@ -12,7 +12,7 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+  <meta property="og:title" content="{{ if .IsHome }}Hardwood Floor Installation & Refinishing | Helena, MT | Traver Hardwood Floors{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}">
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta property="og:image" content="{{ if .Params.featured_image }}{{ .Params.featured_image | absURL }}{{ else }}{{ "images/og-image.jpg" | absURL }}{{ end }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
@@ -20,7 +20,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+  <meta name="twitter:title" content="{{ if .IsHome }}Hardwood Floor Installation & Refinishing | Helena, MT | Traver Hardwood Floors{{ else }}{{ .Title }} | Helena, MT | {{ .Site.Title }}{{ end }}">
   <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta name="twitter:image" content="{{ if .Params.featured_image }}{{ .Params.featured_image | absURL }}{{ else }}{{ "images/og-image.jpg" | absURL }}{{ end }}">
 
@@ -42,23 +42,6 @@
 
   <!-- Plausible Analytics -->
   <script defer data-domain="traverhardwoodfloors.com" src="https://plausible.angmar.dev/js/script.js"></script>
-
-  <!-- Facebook Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '876484957710949');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=876484957710949&ev=PageView&noscript=1"/>
-  </noscript>
 
   <!-- LocalBusiness Schema Markup -->
   <script type="application/ld+json">
@@ -156,9 +139,10 @@
   {{ block "head" . }}{{ end }}
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   {{ partial "header.html" . }}
 
-  <main>
+  <main id="main-content">
     {{ block "main" . }}{{ end }}
   </main>
 
@@ -203,10 +187,41 @@
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       const hamburger = document.getElementById('hamburger');
-      menu.classList.toggle('active');
+      const isOpen = menu.classList.toggle('active');
       hamburger.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', isOpen);
     }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('mobile-menu');
+        const hamburger = document.getElementById('hamburger');
+        if (menu.classList.contains('active')) {
+          menu.classList.remove('active');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.focus();
+        }
+      }
+    });
   </script>
+
+  <!-- Facebook Pixel (deferred to end of body) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '876484957710949');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=876484957710949&ev=PageView&noscript=1"/>
+  </noscript>
 
   {{ block "scripts" . }}{{ end }}
 </body>
