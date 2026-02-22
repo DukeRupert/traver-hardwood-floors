@@ -1,9 +1,9 @@
 ---
 title: "Home"
-description: "Traver Hardwood Floors - Professional hardwood floor installation, sanding, finishing, and restoration serving Helena, Bozeman, Butte, Great Falls, and all of Montana."
+description: "Hardwood floor installation, refinishing, and restoration in Helena, Butte, and Bozeman. Chris Traver — 6th generation Montana native, 18 years of hardwood floors. Free estimates."
 hero:
   headline: "18 Years in Every Board. Helena, Butte & Bozeman."
-  subheadline: "Whether you're restoring a century-old floor or choosing the perfect hardwood for your new build, we bring 18 years of expertise to every board."
+  subheadline: "Whether you're restoring a century-old floor in the Gulch or laying white oak in a new build south of Bozeman, we bring 18 years of hardwood expertise to every project."
 testimonials:
   - name: "Sarah M."
     location: "Helena, MT"
