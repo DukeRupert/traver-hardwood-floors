@@ -1,0 +1,22 @@
+{{/* FAQPage JSON-LD schema — reusable partial
+     Pass a slice of FAQ items (each with .question and .answer) as context.
+     Usage: {{ partial "faq-schema.html" $.Site.Data.faq.homepage }}
+*/}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{ range $i, $item := . }}{{ if $i }},{{ end }}
+    {
+      "@type": "Question",
+      "name": {{ $item.question | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ $item.answer | jsonify }}
+      }
+    }
+    {{ end }}
+  ]
+}
+</script>

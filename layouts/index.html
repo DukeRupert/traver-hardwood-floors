@@ -27,6 +27,7 @@
   ]
 }
 </script>
+{{ partial "faq-schema.html" $.Site.Data.faq.homepage }}
 {{ end }}
 
 {{ define "main" }}
@@ -187,6 +188,22 @@
         </div>
       </div>
       {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section" style="background-color: var(--color-bg-secondary);">
+  <div class="container">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Answers to the questions we hear most from homeowners across western Montana.</p>
+    </div>
+    <div class="faq-container">
+      {{ partial "faq-accordion.html" $.Site.Data.faq.homepage }}
+    </div>
+    <div class="section-footer">
+      <a href="/faq/" class="btn btn-secondary">View All FAQs</a>
     </div>
   </div>
 </section>

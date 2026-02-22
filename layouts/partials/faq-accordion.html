@@ -1,0 +1,30 @@
+{{/* FAQ Accordion — reusable partial
+     Pass a slice of FAQ items (each with .question and .answer) as context.
+     Usage: {{ partial "faq-accordion.html" $.Site.Data.faq.homepage }}
+*/}}
+<div class="faq-accordion" x-data="{ open: null }">
+  {{ range $i, $item := . }}
+  <div class="faq-item">
+    <button
+      class="faq-question"
+      :aria-expanded="open === {{ $i }} ? 'true' : 'false'"
+      aria-controls="faq-answer-{{ $i }}"
+      @click="open = open === {{ $i }} ? null : {{ $i }}"
+    >
+      <span>{{ $item.question }}</span>
+      <svg class="faq-chevron" :class="{ 'faq-chevron-open': open === {{ $i }} }" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </button>
+    <div
+      id="faq-answer-{{ $i }}"
+      role="region"
+      x-show="open === {{ $i }}"
+      x-collapse
+      x-cloak
+    >
+      <div class="faq-answer">
+        <p>{{ $item.answer }}</p>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>

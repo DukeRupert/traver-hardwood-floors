@@ -1,0 +1,29 @@
+{{ define "head" }}
+{{ $all := (append $.Site.Data.faq.additional $.Site.Data.faq.homepage) }}
+{{ partial "faq-schema.html" $all }}
+{{ end }}
+
+{{ define "main" }}
+<!-- FAQ Hero -->
+<section class="page-hero">
+  <div class="container">
+    <h1>Hardwood Flooring FAQ</h1>
+    <p class="hero-subtitle">Answers to the questions we hear most from homeowners across western Montana.</p>
+  </div>
+</section>
+
+<!-- FAQ Content -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-container">
+      <h2>Common Questions</h2>
+      {{ partial "faq-accordion.html" $.Site.Data.faq.homepage }}
+
+      <h2 class="faq-section-heading">More Questions</h2>
+      {{ partial "faq-accordion.html" $.Site.Data.faq.additional }}
+    </div>
+  </div>
+</section>
+
+{{ partial "cta-section.html" . }}
+{{ end }}
