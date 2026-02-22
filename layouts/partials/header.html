@@ -13,7 +13,19 @@
     <div class="nav-menu" id="mobile-menu">
       <ul class="nav-links">
         {{ range .Site.Menus.main }}
+        {{ if eq .URL "/services/" }}
+        <li class="nav-dropdown">
+          <a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . }}class="active" aria-current="page"{{ end }}>{{ .Name }}</a>
+          <button class="nav-dropdown-toggle" aria-label="Toggle services menu" aria-expanded="false" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('active'); this.setAttribute('aria-expanded', this.classList.contains('open'))">&#9662;</button>
+          <ul class="nav-dropdown-menu">
+            {{ range $.Site.Menus.services }}
+            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </li>
+        {{ else }}
         <li><a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . }}class="active" aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{ end }}
         {{ end }}
       </ul>
 

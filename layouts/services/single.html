@@ -5,6 +5,11 @@
 {{ define "main" }}
 <section class="page-hero" {{ with .Params.hero_image }}style="background-image: linear-gradient(var(--color-overlay), var(--color-overlay)), url('{{ . }}'); background-size: cover; background-position: center;"{{ end }}>
   <div class="container">
+    <nav class="service-breadcrumb" aria-label="Breadcrumb">
+      <a href="/services/">Services</a>
+      <span class="breadcrumb-separator" aria-hidden="true">/</span>
+      <span>{{ .Title }}</span>
+    </nav>
     <h1>{{ .Params.headline | default .Title }}</h1>
     <p class="hero-subtitle">{{ .Params.subtitle }}</p>
   </div>

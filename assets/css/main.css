@@ -336,6 +336,52 @@ h4 { font-size: 1.125rem; }
   background-color: #3D2A1E;
 }
 
+/* Nav dropdown - mobile */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-menu {
+  list-style: none;
+  padding-left: var(--spacing-lg);
+  display: none;
+}
+
+.nav-dropdown-menu.active {
+  display: block;
+}
+
+.nav-dropdown-menu a {
+  color: rgba(206, 178, 157, 0.75);
+  font-size: 0.875rem;
+  padding: var(--spacing-xs) 0;
+  display: block;
+}
+
+.nav-dropdown-menu a:hover {
+  color: #FFFFFF;
+}
+
+.nav-dropdown-toggle {
+  display: inline;
+  background: none;
+  border: none;
+  color: rgba(206, 178, 157, 0.75);
+  cursor: pointer;
+  padding: 0 0 0 var(--spacing-xs);
+  font-size: 0.75rem;
+  vertical-align: middle;
+  transition: transform var(--transition-fast);
+}
+
+.nav-dropdown-toggle:hover {
+  color: #FFFFFF;
+}
+
+.nav-dropdown-toggle.open {
+  transform: rotate(180deg);
+}
+
 @media (min-width: 768px) {
   .nav-menu {
     display: flex;
@@ -359,6 +405,47 @@ h4 { font-size: 1.125rem; }
 
   .theme-toggle {
     margin-top: 0;
+  }
+
+  /* Nav dropdown - desktop */
+  .nav-dropdown-toggle {
+    display: inline;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2C1810;
+    border: 1px solid rgba(206, 178, 157, 0.15);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) 0;
+    min-width: 220px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    display: none;
+    padding-left: 0;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown-menu.active {
+    display: block;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-toggle {
+    transform: rotate(180deg);
+  }
+
+  .nav-dropdown-menu a {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    display: block;
+    white-space: nowrap;
+    font-size: 0.875rem;
+  }
+
+  .nav-dropdown-menu a:hover {
+    background-color: rgba(206, 178, 157, 0.1);
   }
 }
 
@@ -1349,8 +1436,52 @@ section {
 }
 
 /* ===========================
+   Services Hub Guide
+   =========================== */
+.services-hub-guide {
+  background-color: var(--color-bg);
+  text-align: center;
+}
+
+.services-hub-guide .container {
+  max-width: 800px;
+}
+
+.services-hub-guide h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.services-hub-guide p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.7;
+}
+
+.services-hub-guide .btn {
+  margin-top: var(--spacing-md);
+}
+
+/* ===========================
    Service Page Specific
    =========================== */
+.service-breadcrumb {
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.service-breadcrumb a {
+  color: var(--color-text-secondary);
+}
+
+.service-breadcrumb a:hover {
+  color: var(--color-primary);
+}
+
+.service-breadcrumb .breadcrumb-separator {
+  margin: 0 var(--spacing-sm);
+  color: var(--color-text-muted);
+}
+
 .service-hero {
   position: relative;
   min-height: 50vh;

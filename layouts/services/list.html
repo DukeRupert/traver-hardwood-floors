@@ -1,26 +1,87 @@
 {{ define "main" }}
 <section class="page-hero">
   <div class="container">
-    <h1>Our Services</h1>
-    <p class="hero-subtitle">From new installation to historic restoration — built for Montana homes.</p>
+    <h1>Hardwood Flooring Services</h1>
+    <p class="hero-subtitle">Full-service hardwood floors — installation, refinishing, repair, and custom stairs — for homes across Helena, Butte, Bozeman, Big Sky, and western Montana.</p>
   </div>
 </section>
 
-<section class="services-section">
+<section class="service-intro">
   <div class="container">
-    <div class="services-grid">
-      {{ range .Site.Menus.services }}
-      <a href="{{ .URL }}" class="service-card">
-        <div class="service-card-image">
-          <img src="/images/service-{{ urlize .Name }}.jpg" alt="{{ .Name }} — professional hardwood floor service in Helena, Montana">
-        </div>
-        <div class="service-card-content">
-          <h3>{{ .Name }}</h3>
-          <p>Professional {{ lower .Name }} services tailored to your needs.</p>
-        </div>
-      </a>
-      {{ end }}
+    <p>Traver Hardwood Floors handles every stage of a hardwood floor project, from the first board going down to restoring what time and wear have done to a floor that's been there for decades. We work across Helena, Butte, Bozeman, Big Sky, and the surrounding communities in western Montana — new builds, historic homes, mountain chalets, and everything in between. If it involves hardwood, it's what we do.</p>
+  </div>
+</section>
+
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-image">
+        <img src="/images/installation.jpg" alt="Hardwood floor installation in a Montana home" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <h2>Installation</h2>
+        <p>New hardwood installation means more than nailing boards to a subfloor. We help you select the right species for how your home is heated, plan the layout so the geometry of the pattern reads correctly in the room, and handle transitions other contractors leave to metal strips and caulk.</p>
+        <p>Whether the subfloor is a concrete slab in a new build south of Bozeman or century-old planking in a Helena Gulch renovation, we prep it right before the first board goes down.</p>
+        <a href="/installation/" class="btn btn-secondary">Learn About Installation</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="feature-section" style="background-color: var(--color-bg-secondary);">
+  <div class="container">
+    <div class="feature-grid reverse">
+      <div class="feature-image">
+        <img src="/images/sanding_and_finishing.jpg" alt="Professional hardwood floor sanding and refinishing" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <h2>Sanding & Finishing</h2>
+        <p>A full sand-and-refinish removes old finish, stain, and surface damage down to bare wood — then rebuilds the surface with a finish chosen for your floors and your home. We specialize in water-based finishes, which cure faster, flex better through Montana's dry winters, and let the natural color of the wood come through rather than shifting it amber.</p>
+        <p>If a full refinish isn't what you need, we'll tell you that, too.</p>
+        <a href="/sanding-and-finishing/" class="btn btn-secondary">Learn About Sanding & Finishing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-image">
+        <img src="/images/repair_and_restoration.jpg" alt="Historic hardwood floor repair and restoration" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <h2>Repair & Restoration</h2>
+        <p>Cupped boards near a wood stove, blackened entryway planks from years of tracked-in snow, original fir floors in a historic Helena home that haven't seen daylight since the 1970s — these are the projects that often get the best results. We assess what's there, replace what can't be saved, and finish the whole floor so the repairs disappear into the grain.</p>
+        <p>Most floors are worth saving. We've been making that case for 18 years.</p>
+        <a href="/repair-and-restoration/" class="btn btn-secondary">Learn About Repair & Restoration</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-section" style="background-color: var(--color-bg-secondary);">
+  <div class="container">
+    <div class="feature-grid reverse">
+      <div class="feature-image">
+        <img src="/images/stairs.jpg" alt="Custom hardwood staircase installation" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <h2>Stairs</h2>
+        <p>A staircase takes more abuse than any other hardwood surface in a home, concentrated on the same few inches of each tread every day. We install new staircases, replace carpet with solid hardwood treads and risers, and refinish existing stairs to match your floors or work as a distinct design element.</p>
+        <p>Every tread is fitted individually — level, consistent in height, and finished with enough coats to hold up to the traffic.</p>
+        <a href="/stairs/" class="btn btn-secondary">Learn About Stairs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-hub-guide">
+  <div class="container">
+    <h2>Not Sure Which Service You Need?</h2>
+    <p>Start with the condition of your floors. If they look dull or scratched but feel structurally sound, refinishing is most likely the right call. If you're seeing gaps, cupping, or boards that have lifted, repair or restoration is the right starting point — often including a refinish at the end. If you're building new or remodeling, installation covers you from subfloor to finish coat. And if your stairs are carpeted and you've been wondering what's underneath, the answer is often better than you'd expect.</p>
+    <p>The estimate is free, and the honest answer about what your floors actually need is part of the conversation.</p>
+    <a href="/contact-us/" class="btn btn-primary">Get a Free Estimate</a>
   </div>
 </section>
 
