@@ -6,18 +6,6 @@
 }
 
 :{$PORT:80} {
-	# Serve static files from Hugo build
-	root * /srv
-	file_server
-
-	# Proxy API requests to Go backend
-	handle /api/* {
-		reverse_proxy localhost:8080
-	}
-
-	# Handle SPA-style routing - try files first, then index
-	try_files {path} {path}/ /index.html
-
 	# Security headers
 	header {
 		X-Content-Type-Options nosniff
@@ -27,6 +15,18 @@
 
 	# Compression
 	encode gzip zstd
+
+	# Proxy API requests to Go backend
+	handle /api/* {
+		reverse_proxy localhost:8080
+	}
+
+	# Serve static files from Hugo build
+	handle {
+		root * /srv
+		try_files {path} {path}/ /index.html
+		file_server
+	}
 
 	# Logging
 	log {

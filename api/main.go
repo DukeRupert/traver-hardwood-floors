@@ -80,11 +80,19 @@ func main() {
 }
 
 func corsMiddleware(allowedOrigin string, next http.HandlerFunc) http.HandlerFunc {
+	// Build set of allowed origins: configured origin + www/non-www variant
+	allowed := map[string]bool{allowedOrigin: true}
+	if strings.Contains(allowedOrigin, "://www.") {
+		allowed[strings.Replace(allowedOrigin, "://www.", "://", 1)] = true
+	} else {
+		allowed[strings.Replace(allowedOrigin, "://", "://www.", 1)] = true
+	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
 
-		// Allow the configured origin or localhost for development
-		if origin == allowedOrigin || strings.HasPrefix(origin, "http://localhost") {
+		// Allow the configured origin (www and non-www) or localhost for development
+		if allowed[origin] || strings.HasPrefix(origin, "http://localhost") {
 			w.Header().Set("Access-Control-Allow-Origin", origin)
 		}
 
