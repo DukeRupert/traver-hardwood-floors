@@ -1909,6 +1909,12 @@ section {
   margin-bottom: var(--spacing-md);
 }
 
+@media (min-width: 768px) {
+  .footer-logo-img {
+    height: 56px;
+  }
+}
+
 /* ===========================
    Service Card Hover Overlay
    =========================== */
