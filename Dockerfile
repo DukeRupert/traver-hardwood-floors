@@ -5,7 +5,7 @@ COPY . .
 RUN hugo --gc --minify
 
 # Stage 2: Build Go API
-FROM golang:1.21-alpine AS go-builder
+FROM golang:1.23-alpine AS go-builder
 WORKDIR /app
 COPY api/go.mod api/go.sum ./
 RUN go mod download
