@@ -1,6 +1,6 @@
 ---
 title: "Contact Us"
-description: "Contact Traver Hardwood Floors for a free estimate on your hardwood flooring project. Serving Helena, Bozeman, Butte, Great Falls, and all of Montana."
+description: "Request an estimate for hardwood floor installation, refinishing, or repair. Free on-site estimates in Helena. Serving Butte, Bozeman, and western Montana."
 featured_image: "/images/og-image.jpg"
 layout: "single"
 ---

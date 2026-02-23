@@ -35,14 +35,27 @@
             </div>
           </div>
 
-          <div class="contact-item">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <div>
-              <strong>Service Area</strong><br>
-              Helena, Butte, and Bozeman, Montana
+          <div class="service-area-callout">
+            <h4 class="service-area-callout-heading">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Service Area &amp; Estimates
+            </h4>
+            <div class="service-area-tier">
+              <span class="service-area-badge service-area-badge--free">Free</span>
+              <div>
+                <strong>Helena area</strong>
+                <p>Free on-site estimates</p>
+              </div>
+            </div>
+            <div class="service-area-tier">
+              <span class="service-area-badge service-area-badge--deposit">Deposit</span>
+              <div>
+                <strong>Butte, Bozeman &amp; beyond</strong>
+                <p>Site visit deposit &mdash; credited to your project</p>
+              </div>
             </div>
           </div>
 
@@ -62,7 +75,7 @@
       </div>
 
       <div class="contact-form">
-        <h3>Send Us a Message</h3>
+        <h3>Request an Estimate</h3>
 
         <div id="form-success" class="form-message form-message-success" role="alert" style="display: none;">
           <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -70,8 +83,8 @@
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
           <div>
-            <strong>Message Sent!</strong>
-            <p>Thank you for contacting us. We'll be in touch soon.</p>
+            <strong>Estimate Request Received!</strong>
+            <p>Thank you! We'll be in touch soon to schedule your estimate.</p>
           </div>
         </div>
 
@@ -108,15 +121,47 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Message *</label>
-            <textarea id="message" name="message" required minlength="40" maxlength="500" placeholder="Tell us about your project..."></textarea>
+            <label for="city">City / Town *</label>
+            <input type="text" id="city" name="city" required maxlength="100" placeholder="e.g., Helena, Bozeman, Big Sky">
+          </div>
+
+          <div class="form-group">
+            <label for="projectType">Project Type</label>
+            <select id="projectType" name="projectType">
+              <option value="">Select a project type...</option>
+              <option value="installation">Installation</option>
+              <option value="refinishing">Sanding & Refinishing</option>
+              <option value="repair">Repair & Restoration</option>
+              <option value="stairs">Stairs</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="squareFootage">Approximate Square Footage</label>
+            <input type="text" id="squareFootage" name="squareFootage" maxlength="20" placeholder="e.g., 500, 1200">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell Us About Your Project *</label>
+            <textarea id="message" name="message" required minlength="40" maxlength="1000" placeholder="Describe your floors, what you'd like done, and any details that would help us understand your project..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Photos <span class="form-help-text">(optional, up to 5)</span></label>
+            <input type="file" id="photo-input" accept="image/*" multiple style="display:none;">
+            <div class="photo-upload-area">
+              <button type="button" id="photo-btn" class="btn btn-secondary">Choose Photos</button>
+              <span class="photo-upload-hint">JPEG, PNG, or WebP &mdash; max 2 MB each</span>
+            </div>
+            <div id="photo-previews" class="photo-previews"></div>
           </div>
 
           <div class="form-group">
             <div class="cf-turnstile" data-sitekey="{{ site.Params.turnstileSiteKey }}" data-callback="onTurnstileSuccess"></div>
           </div>
 
-          <button type="submit" id="submit-btn" class="btn btn-primary btn-submit">Send My Estimate Request</button>
+          <button type="submit" id="submit-btn" class="btn btn-primary btn-submit">Submit Estimate Request</button>
         </form>
       </div>
     </div>
@@ -127,64 +172,142 @@
 {{ define "scripts" }}
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
-  const API_URL = '{{ site.Params.apiUrl | default "/api/contact" }}';
+  const API_URL = '/api/estimate';
   let turnstileToken = '';
+  let resizedPhotos = []; // {blob, name, url}
 
   function onTurnstileSuccess(token) {
     turnstileToken = token;
   }
 
-  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+  // Resize image using Canvas API
+  function resizeImage(file, maxDim, quality) {
+    maxDim = maxDim || 1600;
+    quality = quality || 0.8;
+    return new Promise(function(resolve) {
+      var img = new Image();
+      img.onload = function() {
+        var w = img.width, h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+          else { w = Math.round(w * maxDim / h); h = maxDim; }
+        }
+        var canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        canvas.toBlob(function(blob) { resolve(blob); }, 'image/jpeg', quality);
+      };
+      img.src = URL.createObjectURL(file);
+    });
+  }
+
+  function renderPreviews() {
+    var container = document.getElementById('photo-previews');
+    container.innerHTML = '';
+    resizedPhotos.forEach(function(p, i) {
+      var div = document.createElement('div');
+      div.className = 'photo-preview';
+      div.innerHTML = '<img src="' + p.url + '" alt="Photo preview">' +
+        '<button type="button" class="photo-remove" data-index="' + i + '" aria-label="Remove photo">&times;</button>';
+      container.appendChild(div);
+    });
+    var btn = document.getElementById('photo-btn');
+    btn.textContent = resizedPhotos.length > 0
+      ? 'Choose Photos (' + resizedPhotos.length + '/5)'
+      : 'Choose Photos';
+  }
+
+  // Photo button triggers file input
+  document.getElementById('photo-btn').addEventListener('click', function() {
+    document.getElementById('photo-input').click();
+  });
+
+  // File input change handler
+  document.getElementById('photo-input').addEventListener('change', async function(e) {
+    var files = Array.from(e.target.files);
+    var remaining = 5 - resizedPhotos.length;
+    if (remaining <= 0) return;
+    files = files.slice(0, remaining);
+
+    for (var i = 0; i < files.length; i++) {
+      var blob = await resizeImage(files[i]);
+      resizedPhotos.push({
+        blob: blob,
+        name: files[i].name.replace(/\.[^.]+$/, '.jpg'),
+        url: URL.createObjectURL(blob)
+      });
+    }
+    renderPreviews();
+    // Reset file input so same file can be re-selected
+    e.target.value = '';
+  });
+
+  // Remove photo via event delegation
+  document.getElementById('photo-previews').addEventListener('click', function(e) {
+    var btn = e.target.closest('.photo-remove');
+    if (!btn) return;
+    var idx = parseInt(btn.dataset.index, 10);
+    URL.revokeObjectURL(resizedPhotos[idx].url);
+    resizedPhotos.splice(idx, 1);
+    renderPreviews();
+  });
+
+  // Form submit
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const form = e.target;
-    const submitBtn = document.getElementById('submit-btn');
-    const successMsg = document.getElementById('form-success');
-    const errorMsg = document.getElementById('form-error');
-    const errorText = document.getElementById('error-message');
+    var form = e.target;
+    var submitBtn = document.getElementById('submit-btn');
+    var successMsg = document.getElementById('form-success');
+    var errorMsg = document.getElementById('form-error');
+    var errorText = document.getElementById('error-message');
 
-    // Reset messages
     successMsg.style.display = 'none';
     errorMsg.style.display = 'none';
 
-    // Check Turnstile token
     if (!turnstileToken) {
       errorText.textContent = 'Please complete the security check.';
       errorMsg.style.display = 'flex';
       return;
     }
 
-    // Disable button and show loading
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+    submitBtn.textContent = 'Submitting...';
 
-    const formData = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      message: document.getElementById('message').value,
-      botField: document.getElementById('bot-field').value,
-      turnstileToken: turnstileToken
-    };
+    var fd = new FormData();
+    fd.append('name', document.getElementById('name').value);
+    fd.append('email', document.getElementById('email').value);
+    fd.append('phone', document.getElementById('phone').value);
+    fd.append('city', document.getElementById('city').value);
+    fd.append('projectType', document.getElementById('projectType').value);
+    fd.append('squareFootage', document.getElementById('squareFootage').value);
+    fd.append('message', document.getElementById('message').value);
+    fd.append('botField', document.getElementById('bot-field').value);
+    fd.append('turnstileToken', turnstileToken);
+
+    resizedPhotos.forEach(function(p) {
+      fd.append('photos', p.blob, p.name);
+    });
 
     try {
-      const response = await fetch(API_URL, {
+      var response = await fetch(API_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+        body: fd
       });
 
       if (response.ok) {
         successMsg.style.display = 'flex';
         form.reset();
         form.style.display = 'none';
+        // Clean up preview URLs
+        resizedPhotos.forEach(function(p) { URL.revokeObjectURL(p.url); });
+        resizedPhotos = [];
+        renderPreviews();
       } else {
-        const text = await response.text();
+        var text = await response.text();
         errorText.textContent = text || 'Please try again or call us directly.';
         errorMsg.style.display = 'flex';
-        // Reset Turnstile on error
         if (typeof turnstile !== 'undefined') {
           turnstile.reset();
           turnstileToken = '';
@@ -195,7 +318,7 @@
       errorMsg.style.display = 'flex';
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send My Estimate Request';
+      submitBtn.textContent = 'Submit Estimate Request';
     }
   });
 </script>

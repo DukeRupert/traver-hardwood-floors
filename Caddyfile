@@ -18,6 +18,9 @@
 
 	# Proxy API requests to Go backend
 	handle /api/* {
+		request_body {
+			max_size 12MB
+		}
 		reverse_proxy localhost:8080
 	}
 
