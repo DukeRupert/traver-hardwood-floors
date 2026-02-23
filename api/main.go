@@ -8,6 +8,9 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
+
+	"github.com/getsentry/sentry-go"
 )
 
 type ContactForm struct {
@@ -42,6 +45,7 @@ type Config struct {
 	AllowedOrigin   string
 	Port            string
 	TurnstileSecret string
+	SentryDSN       string
 }
 
 func loadConfig() Config {
@@ -52,6 +56,7 @@ func loadConfig() Config {
 		AllowedOrigin:   getEnv("ALLOWED_ORIGIN", "https://www.traverhardwoodfloors.com"),
 		Port:            getEnv("API_PORT", "8080"),
 		TurnstileSecret: getEnv("TURNSTILE_SECRET", ""),
+		SentryDSN:       getEnv("SENTRY_DSN", ""),
 	}
 }
 
@@ -72,11 +77,41 @@ func main() {
 		log.Fatal("TURNSTILE_SECRET environment variable is required")
 	}
 
-	http.HandleFunc("/api/contact", corsMiddleware(config.AllowedOrigin, contactHandler(config)))
-	http.HandleFunc("/health", healthHandler)
+	// Initialize Sentry for error tracking (optional)
+	if config.SentryDSN == "" {
+		log.Println("SENTRY_DSN not set, error tracking disabled")
+	} else {
+		if err := sentry.Init(sentry.ClientOptions{
+			Dsn:              config.SentryDSN,
+			SendDefaultPII:   true,
+			TracesSampleRate: 0.0,
+		}); err != nil {
+			log.Printf("Sentry init failed: %v", err)
+		} else {
+			log.Println("Error tracking enabled")
+		}
+		defer sentry.Flush(2 * time.Second)
+	}
+
+	http.HandleFunc("/api/contact", recoverMiddleware(corsMiddleware(config.AllowedOrigin, contactHandler(config))))
+	http.HandleFunc("/health", recoverMiddleware(healthHandler))
 
 	log.Printf("Server starting on port %s", config.Port)
 	log.Fatal(http.ListenAndServe(":"+config.Port, nil))
+}
+
+func recoverMiddleware(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		defer func() {
+			if err := recover(); err != nil {
+				sentry.CurrentHub().Recover(err)
+				sentry.Flush(2 * time.Second)
+				log.Printf("Panic recovered: %v", err)
+				http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			}
+		}()
+		next(w, r)
+	}
 }
 
 func corsMiddleware(allowedOrigin string, next http.HandlerFunc) http.HandlerFunc {
@@ -143,7 +178,14 @@ func contactHandler(config Config) http.HandlerFunc {
 			http.Error(w, "Security verification required", http.StatusBadRequest)
 			return
 		}
-		if !verifyTurnstile(config.TurnstileSecret, form.TurnstileToken, r.RemoteAddr) {
+		turnstileOK, err := verifyTurnstile(config.TurnstileSecret, form.TurnstileToken, r.RemoteAddr)
+		if err != nil {
+			log.Printf("Turnstile infrastructure error: %v", err)
+			sentry.CaptureException(err)
+			http.Error(w, "Security verification unavailable", http.StatusServiceUnavailable)
+			return
+		}
+		if !turnstileOK {
 			log.Printf("Turnstile verification failed")
 			http.Error(w, "Security verification failed", http.StatusForbidden)
 			return
@@ -168,6 +210,7 @@ func contactHandler(config Config) http.HandlerFunc {
 		// Send email via Postmark
 		if err := sendEmail(config, form); err != nil {
 			log.Printf("Error sending email: %v", err)
+			sentry.CaptureException(err)
 			http.Error(w, "Failed to send message", http.StatusInternalServerError)
 			return
 		}
@@ -181,7 +224,7 @@ func contactHandler(config Config) http.HandlerFunc {
 	}
 }
 
-func verifyTurnstile(secret, token, remoteIP string) bool {
+func verifyTurnstile(secret, token, remoteIP string) (bool, error) {
 	data := fmt.Sprintf("secret=%s&response=%s&remoteip=%s", secret, token, remoteIP)
 	resp, err := http.Post(
 		"https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -189,21 +232,19 @@ func verifyTurnstile(secret, token, remoteIP string) bool {
 		strings.NewReader(data),
 	)
 	if err != nil {
-		log.Printf("Turnstile API error: %v", err)
-		return false
+		return false, fmt.Errorf("turnstile API request failed: %w", err)
 	}
 	defer resp.Body.Close()
 
 	var result TurnstileResponse
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		log.Printf("Turnstile response parse error: %v", err)
-		return false
+		return false, fmt.Errorf("turnstile response parse error: %w", err)
 	}
 
 	if !result.Success {
 		log.Printf("Turnstile verification failed: %v", result.ErrorCodes)
 	}
-	return result.Success
+	return result.Success, nil
 }
 
 func sendEmail(config Config, form ContactForm) error {

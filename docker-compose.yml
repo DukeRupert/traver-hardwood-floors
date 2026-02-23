@@ -10,4 +10,5 @@ services:
       - TO_EMAIL=${TO_EMAIL:-chris@traverhardwoodfloors.com}
       - ALLOWED_ORIGIN=${ALLOWED_ORIGIN:-https://www.traverhardwoodfloors.com}
       - TURNSTILE_SECRET=${TURNSTILE_SECRET}
+      - SENTRY_DSN=${SENTRY_DSN:-}
     restart: unless-stopped
