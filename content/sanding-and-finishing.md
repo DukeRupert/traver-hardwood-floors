@@ -1,9 +1,9 @@
 ---
-title: "Sanding & Finishing"
-description: "Professional hardwood floor sanding and refinishing in Helena, Bozeman, Butte, and Big Sky. Chris Traver brings 18 years of expertise in water-based finishes built for Montana's dry climate."
+title: "Hardwood Floor Refinishing"
+description: "Hardwood floor refinishing in Helena, Bozeman, Butte & Big Sky. 18 years of water-based finishes built for Montana's dry climate. Free estimates: (406) 451-2282."
 featured_image: "/images/sanding_1.jpg"
 type: "services"
-headline: "Sanding & Finishing"
+headline: "Hardwood Floor Refinishing"
 subtitle: "Reveal What's Underneath"
 intro: "Beneath the scratches, the worn-through patches, and the stain your previous owner thought was a good idea, there's almost always a floor worth saving. We sand down to bare wood, assess what's there, and apply a finish that protects it for the next decade — built for how Montana homes actually live."
 features_title: "Refinishing Benefits"

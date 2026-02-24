@@ -1,6 +1,6 @@
 ---
 title: "Home"
-description: "Hardwood floor installation, refinishing, and restoration in Helena, Butte, and Bozeman. Chris Traver — 6th generation Montana native, 18 years of hardwood floors. Free estimates."
+description: "Installation, refinishing, repair & custom stairs — 18 years of hardwood flooring across Helena, Bozeman & Butte, MT. Free estimates: (406) 451-2282."
 hero:
   headline: "18 Years in Every Board. Helena, Butte & Bozeman."
   subheadline: "Whether you're restoring a century-old floor in the Gulch or laying white oak in a new build south of Bozeman, we bring 18 years of hardwood expertise to every project."
