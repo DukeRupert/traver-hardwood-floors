@@ -67,4 +67,6 @@ Use a hardwood-specific cleaner, not vinegar or general-purpose floor spray. Bot
 
 Montana winters add one more consideration: dry air. When indoor humidity drops below 30%, you'll often see small gaps open between boards as the wood contracts. This is normal seasonal movement, not a sign that something went wrong. Keeping humidity in the 35–55% range minimizes it. If you heat primarily with a wood stove, a humidifier in the main living area makes a real difference in how the floors look and feel through the winter.
 
+Not sure if your floors need refinishing? Our [refinishing guide](/refinishing/) covers the signs to look for and when it makes sense.
+
 We serve Helena, Butte, Bozeman, Big Sky, and the surrounding communities throughout western Montana. Every project starts with a free on-site estimate.
