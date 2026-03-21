@@ -10,15 +10,13 @@
         <div class="footer-trust">
           <a href="https://www.bbb.org/us/mt/helena/profile/hardwood-floor-contractors/traver-hardwood-floors-llc-1296-1000188524/#sealclick"
              target="_blank"
-             rel="nofollow"
-             class="inline-block mt-5">
+             rel="nofollow">
             <img
               src="https://seal-alaskaoregonwesternwashington.bbb.org/seals/darkgray-seal-200-42-whitetxt-bbb-1000188524.png"
               alt="Traver Hardwood Floors LLC BBB Business Review"
               width="200"
               height="42"
-              loading="lazy"
-              class="opacity-90 hover:opacity-100 transition-opacity" />
+              loading="lazy" />
           </a>
         </div>
         <div class="social-links">
@@ -64,6 +62,7 @@
         <ul>
           <li><a href="/contact-us/">Contact Us</a></li>
           <li><a href="tel:{{ .Site.Params.phoneTel }}">Call {{ .Site.Params.phoneFormatted }}</a></li>
+          <li><a href="{{ .Site.Params.social.google }}" target="_blank" rel="noopener noreferrer">Reviews on Google ★ 5.0</a></li>
         </ul>
       </div>
 
@@ -80,6 +79,7 @@
     <div class="footer-bottom">
       <p>&copy; {{ now.Year }} Traver Hardwood Floors. All rights reserved.</p>
       <p class="footer-location">Serving Helena, Butte & Bozeman, Montana</p>
+      <p class="footer-license">Licensed & insured in Montana</p>
     </div>
 
     <!-- Firefly Software signature -->

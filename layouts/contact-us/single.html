@@ -1,17 +1,19 @@
 {{ define "main" }}
 <section class="page-hero">
   <div class="container">
-    <h1>Contact Us</h1>
-    <p class="hero-subtitle">Let's Talk About Your Floor</p>
+    <p class="hero-eyebrow">Get in Touch</p>
+    <h1>Let's Talk About Your Floor</h1>
+    <p class="hero-subtitle">Free estimates in Helena — site visit deposits credited to your project in Butte, Bozeman & beyond</p>
   </div>
 </section>
 
-<section class="contact-section">
+<section class="contact-section" style="background-color: var(--cream);">
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info">
+        <p class="section-eyebrow">Contact</p>
         <h3>Get in Touch</h3>
-        <p>We're here to bring your vision to life. Whether you have questions about our services, need a quote, or are ready to schedule your hardwood floor installation or refinishing, our team is just a message away.</p>
+        <p>Whether you have questions about our services, need a quote, or are ready to schedule your hardwood floor installation or refinishing, we're just a message away.</p>
 
         <div class="contact-details">
           <div class="contact-item">
@@ -21,6 +23,17 @@
             <div>
               <strong>Phone</strong><br>
               <a href="tel:{{ .Site.Params.phoneTel }}">{{ .Site.Params.phoneFormatted }}</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:chris@traverhardwoodfloors.com">chris@traverhardwoodfloors.com</a>
             </div>
           </div>
 
@@ -75,6 +88,7 @@
       </div>
 
       <div class="contact-form">
+        <p class="section-eyebrow">Estimate Request</p>
         <h3>Request an Estimate</h3>
 
         <div id="form-success" class="form-message form-message-success" role="alert" style="display: none;">
@@ -84,7 +98,7 @@
           </svg>
           <div>
             <strong>Estimate Request Received!</strong>
-            <p>Thank you! We'll be in touch soon to schedule your estimate.</p>
+            <p>Thank you! We typically respond within one business day to schedule your estimate.</p>
           </div>
         </div>
 
@@ -106,7 +120,7 @@
           </p>
 
           <div class="form-group">
-            <label for="name">Name *</label>
+            <label for="name">Full Name *</label>
             <input type="text" id="name" name="name" required minlength="1" maxlength="50">
           </div>
 
@@ -128,7 +142,7 @@
           <div class="form-group">
             <label for="projectType">Project Type</label>
             <select id="projectType" name="projectType">
-              <option value="">Select a project type...</option>
+              <option value="">Select a service...</option>
               <option value="installation">Installation</option>
               <option value="refinishing">Sanding & Refinishing</option>
               <option value="repair">Repair & Restoration</option>

@@ -33,20 +33,21 @@
     <nav aria-label="Breadcrumb" class="hero-breadcrumb">
       <a href="/projects/">Our Work</a> / <span aria-current="page">{{ .Title }}</span>
     </nav>
+    <p class="hero-eyebrow">{{ .Params.location }}{{ with .Params.year }} · {{ . }}{{ end }}</p>
     <h1>{{ .Title }}</h1>
-    <p class="hero-subtitle">{{ .Params.location }}</p>
+    {{ with .Params.species }}<p class="hero-subtitle">{{ . }}</p>{{ end }}
   </div>
 </section>
 
 {{ with .Params.featured_image }}
-<section class="project-hero-image">
+<section class="project-hero-image" style="background-color: var(--cream);">
   <div class="container">
     <img src="{{ . }}" alt="{{ $.Title }} — {{ $.Params.location }}">
   </div>
 </section>
 {{ end }}
 
-<section class="project-content">
+<section class="project-content" style="background-color: var(--parchment);">
   <div class="container">
     <div class="project-intro">
       {{ if .Params.services }}
@@ -64,6 +65,7 @@
 
     {{ if .Params.before_image }}
     <div class="before-after">
+      <p class="section-eyebrow">Before & After</p>
       <h2>The Transformation</h2>
       <div class="before-after-grid">
         <div class="before-image">
@@ -80,6 +82,7 @@
 
     {{ if .Params.gallery }}
     <div class="project-gallery">
+      <p class="section-eyebrow">Gallery</p>
       <h2>Project Gallery</h2>
       <div class="gallery-grid">
         {{ range .Params.gallery }}
@@ -93,7 +96,7 @@
   </div>
 </section>
 
-<section class="project-nav">
+<section class="project-nav" style="background-color: var(--cream);">
   <div class="container">
     <div class="project-nav-links">
       {{ with .PrevInSection }}

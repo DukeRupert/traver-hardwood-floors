@@ -1,23 +1,40 @@
 {{ define "main" }}
 <section class="page-hero">
   <div class="container">
+    <p class="hero-eyebrow">Portfolio</p>
     <h1>Our Work</h1>
-    <p class="hero-subtitle">Featured projects showcasing our craftsmanship</p>
+    <p class="hero-subtitle">A look at recent projects across Montana — from Big Sky chalets to historic Helena homes.</p>
   </div>
 </section>
 
-<section class="projects-section">
+<section class="projects-section" style="background-color: var(--cream);" x-data="{ filter: 'all' }">
   <div class="container">
+    <div class="project-filters" role="group" aria-label="Filter projects by service type">
+      <button class="filter-btn" :class="{ 'active': filter === 'all' }" @click="filter = 'all'">All</button>
+      <button class="filter-btn" :class="{ 'active': filter === 'installation' }" @click="filter = 'installation'">Installation</button>
+      <button class="filter-btn" :class="{ 'active': filter === 'refinishing' }" @click="filter = 'refinishing'">Refinishing</button>
+      <button class="filter-btn" :class="{ 'active': filter === 'restoration' }" @click="filter = 'restoration'">Restoration</button>
+      <button class="filter-btn" :class="{ 'active': filter === 'stairs' }" @click="filter = 'stairs'">Stairs</button>
+    </div>
+
     <div class="projects-grid">
       {{ range .Pages.ByDate.Reverse }}
-      <a href="{{ .Permalink }}" class="project-card">
+      <a href="{{ .Permalink }}" class="project-card"
+         x-show="filter === 'all'{{ range .Params.service_type }} || filter === '{{ . }}'{{ end }}"
+         x-transition>
         <div class="project-card-image">
           <img src="{{ .Params.featured_image }}" alt="{{ .Title }} — hardwood flooring project, {{ .Params.location }}">
         </div>
         <div class="project-card-content">
           <h3>{{ .Title }}</h3>
-          <p class="project-location">{{ .Params.location }}</p>
+          <p class="project-location">{{ .Params.location }}{{ with .Params.year }} · {{ . }}{{ end }}</p>
+          {{ with .Params.species }}<p class="project-species">{{ . }}</p>{{ end }}
           <p class="project-summary">{{ .Params.summary }}</p>
+          <div class="project-tags">
+            {{ range .Params.services }}
+            <span class="service-tag">{{ . }}</span>
+            {{ end }}
+          </div>
           <span class="project-link">View Project →</span>
         </div>
       </a>

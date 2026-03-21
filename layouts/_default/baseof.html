@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" data-theme="light">
+<html lang="{{ .Site.LanguageCode }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,12 +34,12 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#2C1810">
+  <meta name="theme-color" content="#4A2E14">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Main CSS -->
   {{ $style := resources.Get "css/main.css" | minify }}
@@ -157,44 +157,6 @@
   </main>
 
   {{ partial "footer.html" . }}
-
-  <!-- Theme Toggle Script -->
-  <script>
-    // Check for saved theme preference or default to light
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-    }
-
-    function updateThemeIcon(theme) {
-      const sunIcon = document.getElementById('sun-icon');
-      const moonIcon = document.getElementById('moon-icon');
-      const toggle = document.getElementById('theme-toggle');
-      if (sunIcon && moonIcon) {
-        if (theme === 'dark') {
-          sunIcon.style.display = 'block';
-          moonIcon.style.display = 'none';
-        } else {
-          sunIcon.style.display = 'none';
-          moonIcon.style.display = 'block';
-        }
-      }
-      if (toggle) {
-        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      }
-    }
-
-    // Initialize icon on load
-    document.addEventListener('DOMContentLoaded', () => {
-      updateThemeIcon(savedTheme);
-    });
-  </script>
 
   <!-- Mobile Menu Script -->
   <script>
