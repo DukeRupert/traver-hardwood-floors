@@ -2003,7 +2003,6 @@ section {
 
 .service-intro .container {
   max-width: 800px;
-  text-align: center;
 }
 
 .service-intro p {
@@ -2041,32 +2040,19 @@ section {
 }
 
 .feature-item {
-  display: flex;
-  gap: var(--spacing-md);
-  align-items: flex-start;
+  display: block;
 }
 
-.feature-icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.feature-item h5 {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 400;
   color: var(--walnut);
-}
-
-.feature-item h4 {
-  font-size: 0.9375rem;
-  letter-spacing: normal;
-  text-transform: none;
-  color: var(--text-primary);
   margin-bottom: var(--spacing-xs);
 }
 
 .feature-item p {
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
   font-size: 0.875rem;
 }
 
