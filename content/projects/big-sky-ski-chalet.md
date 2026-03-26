@@ -5,6 +5,11 @@ date: 2024-03-10
 location: "Big Sky, MT"
 summary: "A stunning Nordic-inspired finish using whitener additive for a bright, modern mountain aesthetic"
 featured_image: "/images/projects/big_sky_ski_chalet_1.webp"
+service_type:
+  - "refinishing"
+region: "Big Sky"
+year: 2024
+species: "Hardwood (whitened finish)"
 services:
   - "Sanding & Finishing"
   - "Custom Finish"
@@ -24,15 +29,14 @@ This Big Sky ski chalet called for something special—a light, airy aesthetic t
 
 ## The Nordic Look
 
-To achieve the desired Nordic-inspired finish, we used a specialized whitener additive in our finishing process. This technique lightens the natural wood tones while still allowing the beautiful grain patterns to show through, creating that signature Scandinavian look that's both modern and timeless.
+To achieve the desired Nordic-inspired finish, we used a specialized whitener additive in our finishing process. This technique lightens the natural wood tones while still allowing the beautiful grain patterns to show through, creating that signature Scandinavian look that's both modern and warm.
 
-## Why Choose a Whitened Finish?
+## Why a Whitened Finish Works Here
 
-The Nordic aesthetic has become increasingly popular in mountain homes for good reason:
+Light-toned floors do something specific in a mountain home with high ceilings and large windows: they bounce the natural light back into the room rather than absorbing it. In a chalet where the views are the point, that matters. You're not fighting the space to feel bright — the floor is doing some of that work for you.
 
-- **Brightens the space** — Light floors reflect natural light, making rooms feel larger and more open
-- **Modern yet warm** — Achieves a contemporary look while maintaining the warmth of natural wood
-- **Versatile design** — Pairs beautifully with both minimalist and rustic mountain décor
-- **Shows less dust** — Lighter finishes are more forgiving in high-traffic areas
+At the same time, the whitener additive preserves what makes real hardwood worth choosing in the first place. The grain is still visible, the material still reads as wood. It doesn't look painted or bleached out. It lands somewhere between the warmth of a traditional finish and the clean lines of a modern interior — which is exactly what this room called for.
 
-The result is a floor that perfectly captures the essence of modern mountain living—clean, bright, and effortlessly sophisticated.
+That balance also means the floors hold their own whether the owners furnish toward minimalist or lean into the mountain-cabin feel with heavier timber and leather. A neutral, light-toned floor rarely becomes the wrong choice five years later.
+
+The whitener was worked into the water-based finish during the sanding process — not a surface stain or a paint, but integral to the finish layers themselves. That's how you get the consistency across the grain without the blotchy, washed-out look that shortcuts produce.

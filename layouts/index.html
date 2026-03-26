@@ -44,7 +44,10 @@
     class="hero-bg-img">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Helena · Butte · Bozeman</p>
+    <picture class="hero-logo">
+      <source srcset="/images/logo-hero.webp, /images/logo-hero@2x.webp 2x" type="image/webp">
+      <img src="/images/logo.png" alt="Traver Hardwood Floors" width="300" height="300">
+    </picture>
     <h1>{{ .Params.hero.headline | default "18 Years in Every Board." }}</h1>
     <p>{{ .Params.hero.subheadline | default "Whether you're restoring a century-old floor in the Gulch or laying white oak in a new build south of Bozeman, we bring 18 years of hardwood expertise to every project." }}</p>
     <div class="hero-buttons">
