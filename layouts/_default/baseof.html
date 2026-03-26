@@ -166,6 +166,7 @@
       const isOpen = menu.classList.toggle('active');
       hamburger.classList.toggle('active');
       hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
     }
 
     document.addEventListener('keydown', function(e) {
@@ -176,6 +177,7 @@
           menu.classList.remove('active');
           hamburger.classList.remove('active');
           hamburger.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
           hamburger.focus();
         }
       }

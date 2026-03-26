@@ -39,7 +39,7 @@
   --color-border-mid: rgba(74, 46, 20, 0.22);
   --color-border-warm: rgba(200, 169, 126, 0.45);
   --color-shadow: rgba(74, 46, 20, 0.10);
-  --color-overlay: rgba(74, 46, 20, 0.65);
+  --color-overlay: rgba(44, 40, 34, 0.7);
 
   /* Typography */
   --font-sans: 'Source Sans 3', 'Helvetica Neue', sans-serif;
@@ -284,6 +284,10 @@ h4 {
 /* ===========================
    Header & Navigation
    =========================== */
+body.menu-open {
+  overflow: hidden;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -332,7 +336,7 @@ h4 {
 }
 
 .nav-menu {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: absolute;
   top: var(--header-height);
@@ -340,11 +344,27 @@ h4 {
   right: 0;
   background-color: var(--warm-white);
   border-bottom: 1px solid var(--color-border-warm);
-  padding: var(--spacing-md);
+  padding: 0 var(--spacing-md);
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: max-height 350ms cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 250ms cubic-bezier(0.25, 1, 0.5, 1),
+              visibility 0ms 350ms,
+              padding 350ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nav-menu.active {
-  display: flex;
+  max-height: 500px;
+  opacity: 1;
+  visibility: visible;
+  padding: var(--spacing-md);
+  box-shadow: 0 4px 12px rgba(74, 46, 20, 0.08);
+  transition: max-height 350ms cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 250ms cubic-bezier(0.25, 1, 0.5, 1),
+              visibility 0ms 0ms,
+              padding 350ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nav-links {
@@ -396,7 +416,7 @@ h4 {
   display: none;
   align-items: center;
   gap: var(--spacing-xs);
-  color: var(--slate-mid);
+  color: var(--sage);
   font-size: 0.8125rem;
   font-weight: 600;
   text-decoration: none;
@@ -405,15 +425,50 @@ h4 {
 }
 
 .header-phone-desktop:hover {
-  color: var(--walnut);
+  color: #5A6B4A;
 }
 
 .nav-cta-group {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border-warm);
+  margin-top: var(--spacing-sm);
 }
 
 .nav-estimate-btn {
-  display: none;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.header-estimate-mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--walnut);
+  color: var(--grain);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: background-color var(--transition-fast);
+}
+
+.header-estimate-mobile:hover {
+  background-color: var(--oak);
+  color: var(--grain);
+}
+
+.nav-phone-mobile-menu {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .hamburger {
@@ -478,19 +533,28 @@ h4 {
 }
 
 .nav-dropdown-toggle {
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0 0 0 var(--spacing-xs);
+  width: 44px;
+  height: 44px;
+  margin: -10px 0 -10px 0;
   font-size: 0.75rem;
-  vertical-align: middle;
-  transition: transform var(--transition-fast);
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
 .nav-dropdown-toggle:hover {
   color: var(--walnut);
+}
+
+.nav-dropdown-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.35);
 }
 
 .nav-dropdown-toggle.open {
@@ -507,6 +571,11 @@ h4 {
     background: none;
     border: none;
     padding: 0;
+    max-height: none;
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+    transition: none;
   }
 
   .nav-links {
@@ -527,19 +596,33 @@ h4 {
   }
 
   .nav-cta-group {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
+    flex-direction: row;
+    padding-top: 0;
+    border-top: none;
+    margin-top: 0;
   }
 
   .nav-estimate-btn {
+    width: auto;
     padding: 10px 20px;
     font-size: 0.75rem;
   }
 
+  .header-estimate-mobile {
+    display: none;
+  }
+
+  .nav-phone-mobile-menu {
+    display: none;
+  }
+
   /* Nav dropdown - desktop */
   .nav-dropdown-toggle {
-    display: inline;
+    display: inline-flex;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0 0 0 var(--spacing-xs);
   }
 
   .nav-dropdown-menu {
@@ -559,11 +642,13 @@ h4 {
   }
 
   .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
   .nav-dropdown-menu.active {
     display: block;
   }
 
-  .nav-dropdown:hover .nav-dropdown-toggle {
+  .nav-dropdown:hover .nav-dropdown-toggle,
+  .nav-dropdown:focus-within .nav-dropdown-toggle {
     transform: rotate(180deg);
   }
 
@@ -630,18 +715,18 @@ h4 {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--sand);
+  color: var(--grain);
   margin-bottom: var(--spacing-md);
 }
 
 .hero h1 {
-  color: var(--grain);
+  color: var(--warm-white);
   margin-bottom: var(--spacing-lg);
   line-height: 1.15;
 }
 
 .hero p {
-  color: var(--sand);
+  color: var(--grain);
   font-size: 1rem;
   margin-bottom: var(--spacing-xl);
   max-width: 560px;
@@ -668,13 +753,10 @@ h4 {
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 3px,
-    rgba(200, 169, 126, 0.04) 3px,
-    rgba(200, 169, 126, 0.04) 4px
-  );
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, transparent 40%, transparent 60%, rgba(0, 0, 0, 0.06) 100%),
+    radial-gradient(ellipse at 30% 20%, rgba(200, 169, 126, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(200, 169, 126, 0.05) 0%, transparent 50%);
 }
 
 .page-hero .container {
@@ -1226,13 +1308,10 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 3px,
-    rgba(200, 169, 126, 0.04) 3px,
-    rgba(200, 169, 126, 0.04) 4px
-  );
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, transparent 40%, transparent 60%, rgba(0, 0, 0, 0.06) 100%),
+    radial-gradient(ellipse at 30% 20%, rgba(200, 169, 126, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(200, 169, 126, 0.05) 0%, transparent 50%);
 }
 
 @media (min-width: 768px) {
