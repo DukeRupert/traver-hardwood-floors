@@ -5,7 +5,7 @@ description: "Privacy Policy for Traver Hardwood Floors — how we collect, use,
 
 # Privacy Policy
 
-**Last Updated: February 2026**
+**Last Updated: March 2026**
 
 Traver Hardwood Floors ("we," "us," or "our") operates the website traverhardwoodfloors.com. This privacy policy explains what information we collect, how we use it, and your choices regarding that information.
 
@@ -28,6 +28,18 @@ We use **Plausible Analytics** to understand how visitors use our website. Plaus
 
 You can review Plausible's data practices at https://plausible.io/data-policy.
 
+### Google Analytics
+
+This website uses **Google Analytics 4** (measurement ID: G-1457N59HBS), a web analytics service provided by Google LLC. Google Analytics uses cookies and similar technologies to collect information about how you use our website, including pages visited, time spent on pages, referring websites, and general location data. This information is transmitted to and stored by Google.
+
+Google may use this data to evaluate your use of the website, compile reports on website activity, and provide other services related to website and internet usage. Google may also transfer this information to third parties where required by law or where third parties process the information on Google's behalf.
+
+You can learn more about how Google uses your data at https://policies.google.com/privacy.
+
+**Your choices:**
+- You can opt out of Google Analytics by installing the Google Analytics Opt-out Browser Add-on: https://tools.google.com/dlpage/gaoptout
+- You can manage or delete cookies through your browser settings
+
 ### Facebook Pixel
 
 This website uses the **Meta (Facebook) Pixel**, a tracking tool that collects data about your activity on our site and sends it to Meta Platforms, Inc. The Pixel places cookies on your browser and may collect information including pages you visit, actions you take on the site, your IP address, browser information, and device identifiers. This data is used to measure the effectiveness of our advertising on Facebook and Instagram, and to show you relevant ads on those platforms.
@@ -48,6 +60,12 @@ We use the information you provide through our contact form to:
 - Schedule consultations or appointments
 - Communicate with you about flooring projects you've requested
 
+We use data collected through Google Analytics to:
+
+- Understand how visitors find and navigate our website
+- Identify which pages and content are most useful
+- Improve our website's performance and user experience
+
 We use data collected through the Facebook Pixel to:
 
 - Measure the effectiveness of our advertising campaigns
@@ -60,13 +78,14 @@ We do not sell, trade, or rent your personal information to third parties.
 
 We may share your information only in the following circumstances:
 
-- **Service providers:** We may share information with tools and services that help us operate our website (such as our analytics provider, and Meta for advertising purposes), but only to the extent necessary for those services to function.
+- **Service providers:** We may share information with tools and services that help us operate our website (such as our analytics providers, Google for analytics, and Meta for advertising purposes), but only to the extent necessary for those services to function.
 - **Legal requirements:** We may disclose information if required to do so by law or in response to a valid legal request.
 
 ## Cookies
 
 This website uses cookies for the following purposes:
 
+- **Google Analytics:** Places cookies to collect anonymous usage data for website analytics and improvement.
 - **Facebook Pixel:** Places cookies to track site activity for advertising measurement and targeting on Meta platforms.
 
 You can control or delete cookies through your browser settings. Disabling cookies may affect the functionality of some features on this site.
