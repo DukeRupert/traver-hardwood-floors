@@ -29,25 +29,26 @@
 
 {{ define "main" }}
 <section class="page-hero">
-  <div class="container">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
     <nav aria-label="Breadcrumb" class="hero-breadcrumb">
       <a href="/projects/">Our Work</a> / <span aria-current="page">{{ .Title }}</span>
     </nav>
-    <p class="hero-eyebrow">{{ .Params.location }}{{ with .Params.year }} · {{ . }}{{ end }}</p>
+    <span class="hero-eyebrow">{{ .Params.location }}{{ with .Params.year }} · {{ . }}{{ end }}</span>
     <h1>{{ .Title }}</h1>
-    {{ with .Params.species }}<p class="hero-subtitle">{{ . }}</p>{{ end }}
+    {{ with .Params.species }}<p class="hero-sub">{{ . }}</p>{{ end }}
   </div>
 </section>
 
 {{ with .Params.featured_image }}
-<section class="project-hero-image" style="background-color: var(--cream);">
+<section class="project-hero-image" style="background-color: var(--bg);">
   <div class="container">
     <img src="{{ . }}" alt="{{ $.Title }} — {{ $.Params.location }}">
   </div>
 </section>
 {{ end }}
 
-<section class="project-content" style="background-color: var(--parchment);">
+<section class="project-content" style="background-color: var(--surface);">
   <div class="container">
     <div class="project-intro">
       {{ if .Params.services }}
@@ -96,7 +97,7 @@
   </div>
 </section>
 
-<section class="project-nav" style="background-color: var(--cream);">
+<section class="project-nav" style="background-color: var(--bg);">
   <div class="container">
     <div class="project-nav-links">
       {{ with .PrevInSection }}

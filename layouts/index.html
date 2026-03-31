@@ -48,175 +48,184 @@
       <source srcset="/images/logo-hero.webp, /images/logo-hero@2x.webp 2x" type="image/webp">
       <img src="/images/logo.png" alt="Traver Hardwood Floors" width="300" height="300">
     </picture>
-    <h1>{{ .Params.hero.headline | default "18 Years in Every Board." }}</h1>
-    <p>{{ .Params.hero.subheadline | default "Whether you're restoring a century-old floor in the Gulch or laying white oak in a new build south of Bozeman, we bring 18 years of hardwood expertise to every project." }}</p>
-    <div class="hero-buttons">
+    <span class="hero-eyebrow">Hardwood Floors · Helena, Butte & Bozeman, MT</span>
+    <h1>18 years in <em>every board.</em></h1>
+    <p class="hero-sub">One craftsman. One material. Montana's climate demands this kind of specificity — and so does your floor.</p>
+    <div class="hero-actions">
       <a href="/contact-us/" class="btn btn-primary">Request an Estimate</a>
-      <a href="tel:{{ .Site.Params.phoneTel }}" class="btn btn-phone">
-        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-        </svg>
-        Call {{ .Site.Params.phoneFormatted }}
-      </a>
+      <a href="#our-work" class="btn btn-ghost">See Our Work</a>
     </div>
   </div>
 </section>
 
-<!-- Montana Inspired Section -->
-<section class="feature-section" style="background-color: var(--cream);">
+<!-- Proof Bar -->
+<section class="proof-bar">
+  <div class="proof-inner">
+    <div class="proof-item">
+      <span class="proof-number" role="img" aria-label="5 out of 5 stars">5★</span>
+      <span class="proof-label">Rated on Google</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-number">6th</span>
+      <span class="proof-label">Generation Montana native</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-number">4</span>
+      <span class="proof-label">Sons trained in the trade</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-number">3</span>
+      <span class="proof-label">Cities served across Montana</span>
+    </div>
+  </div>
+</section>
+
+<!-- Built for Montana -->
+<section class="feature-section" style="background-color: var(--bg);">
   <div class="container">
     <div class="feature-grid">
       <div class="feature-image">
         <img src="/images/custom-hardwood-installation-montana-home.webp" alt="Custom hardwood floor installation in Montana home" loading="lazy">
       </div>
       <div class="feature-content">
-        <h2>Built for Montana Homes</h2>
-        <p>Montana's dry winters are hard on hardwood. So is a wood stove running from October through April. Chris selects species and finishes with that in mind — white oak and hickory for stability, water-based finishes that flex with seasonal movement and cure fast in low-humidity conditions.</p>
-        <p>Whether you're working with century-old fir in a Helena historic home or starting fresh in a new build, we fit the floor to the house — not the other way around.</p>
-        <a href="/installation/" class="btn btn-secondary">See How It Works</a>
+        <span class="section-eyebrow">Built for Montana</span>
+        <h2>Dry winters are hard on hardwood. We know what survives them.</h2>
+        <p>Montana's forced-air heating pulls indoor humidity to 20% or lower from October through April. Most wood floors aren't laid with that in mind. Ours are.</p>
+        <p>Chris selects species and finishes for this specific climate — white oak and hickory for stability, water-based finishes that flex with seasonal movement and cure fast in low-humidity conditions.</p>
+        <p>That's not a product recommendation. It's 18 years of watching what fails here and choosing accordingly.</p>
+        <a href="/installation/" class="btn-text">Learn how we work</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Family Owned Section -->
-<section class="feature-section" style="background-color: var(--parchment);">
-  <div class="container">
-    <div class="feature-grid reverse">
-      <div class="feature-image">
-        <img src="/images/traver-family-helena-mt.webp" alt="The Traver family — Chris Traver and sons, hardwood flooring craftsmen in Helena, Montana" loading="lazy">
-      </div>
-      <div class="feature-content">
-        <h2>Family-Owned Tradition</h2>
-        <p>Chris Traver is a 6th generation Montana native who has spent 18 years doing one thing: hardwood floors. Born in <a href="/bozeman/">Bozeman</a>, relocated to Helena in 2023, he came for the housing stock — historic homes with original fir and pine buried under decades of carpet and paint.</p>
-        <p>He's mentored four sons in the trade. The Traver name goes on every floor we lay, and that means something to us.</p>
-        <a href="/about-us/" class="btn btn-secondary">Meet Chris Traver</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Services Section -->
-<section class="services-section">
+<!-- Services -->
+<section class="services-section" style="background-color: var(--surface);">
   <div class="container">
     <div class="section-header">
-      <p class="section-eyebrow">Services</p>
-      <h2>What We Do</h2>
-      <p class="section-subhead">Installation, refinishing, repair, and custom stair work — across Helena, Butte, Bozeman, Big Sky, and the surrounding communities of western Montana.</p>
+      <span class="section-eyebrow">What we do</span>
+      <h2>One material. Four ways to work with it.</h2>
     </div>
     <div class="services-grid-compact">
-      <a href="/installation/" class="service-card-compact">
-        <h3>Installation</h3>
-        <p>Custom patterns, species selection, and transitions other contractors won't attempt.</p>
-        <span class="btn-text">Learn More</span>
+      <a href="/installation/" class="service-card-compact service-card-with-image">
+        <div class="service-card-image">
+          <img src="/images/installation_1.jpg" alt="Custom hardwood floor installation" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <span class="service-number">01</span>
+          <h3>Installation</h3>
+          <p>Custom patterns, species selection, and transitions other contractors won't attempt. Straight lay to herringbone to diagonal — we fit the floor to the house.</p>
+          <span class="btn-text">Learn more</span>
+        </div>
       </a>
-      <a href="/sanding-and-finishing/" class="service-card-compact">
-        <h3>Sanding & Finishing</h3>
-        <p>Reveal the floor hiding under years of wear.</p>
-        <span class="btn-text">Learn More</span>
+      <a href="/sanding-and-finishing/" class="service-card-compact service-card-with-image">
+        <div class="service-card-image">
+          <img src="/images/sanding_1.jpg" alt="Hardwood floor sanding and refinishing" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <span class="service-number">02</span>
+          <h3>Sanding & Finishing</h3>
+          <p>Reveal the floor hiding under years of wear. Water-based finishes that cure fast, smell less, and hold up through Montana winters.</p>
+          <span class="btn-text">Learn more</span>
+        </div>
       </a>
-      <a href="/repair-and-restoration/" class="service-card-compact">
-        <h3>Repair & Restoration</h3>
-        <p>We see potential where others see problems.</p>
-        <span class="btn-text">Learn More</span>
+      <a href="/repair-and-restoration/" class="service-card-compact service-card-with-image">
+        <div class="service-card-image">
+          <img src="/images/repair_1.jpg" alt="Hardwood floor repair and restoration" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <span class="service-number">03</span>
+          <h3>Repair & Restoration</h3>
+          <p>We see potential where others see problems. Flood damage, historic homes, floors other contractors walked away from — those are our best projects.</p>
+          <span class="btn-text">Learn more</span>
+        </div>
       </a>
-      <a href="/stairs/" class="service-card-compact">
-        <h3>Stairs</h3>
-        <p>Carpet-to-hardwood conversions, slab treads, and refinishing on every stair style.</p>
-        <span class="btn-text">Learn More</span>
+      <a href="/stairs/" class="service-card-compact service-card-with-image">
+        <div class="service-card-image">
+          <img src="/images/stairs_1.jpg" alt="Custom hardwood staircase" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <span class="service-number">04</span>
+          <h3>Stairs</h3>
+          <p>Carpet-to-hardwood conversions, slab treads, and refinishing on every stair style. Matched to your existing floor where required.</p>
+          <span class="btn-text">Learn more</span>
+        </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- Our Work Section -->
-<section class="our-work-section">
+<!-- Portfolio -->
+<section id="our-work" class="our-work-section" style="background-color: var(--bg-mid);">
   <div class="container">
     <div class="section-header">
-      <p class="section-eyebrow">Portfolio</p>
-      <h2>Our Work</h2>
-      <p class="section-subhead">A look at recent projects across Montana — from Big Sky chalets to historic Helena homes.</p>
+      <div>
+        <span class="section-eyebrow">Our Work</span>
+        <h2>Recent projects across Montana</h2>
+      </div>
+      <a href="/projects/" class="portfolio-all">View all projects</a>
     </div>
     <div class="projects-showcase">
-      {{ range first 2 (where .Site.RegularPages "Section" "projects") }}
+      {{ range first 3 (where .Site.RegularPages "Section" "projects") }}
       <a href="{{ .Permalink }}" class="project-showcase-card">
         <div class="project-showcase-image">
           <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" loading="lazy">
+          <div class="project-showcase-overlay">
+            <span class="view-project-label">View Project</span>
+          </div>
         </div>
         <div class="project-showcase-content">
+          <span class="project-showcase-location">{{ .Params.location }}</span>
           <h3>{{ .Title }}</h3>
-          <p class="project-showcase-location">{{ .Params.location }}</p>
           <p class="project-showcase-summary">{{ .Params.summary }}</p>
-          <span class="project-showcase-link">View Project →</span>
         </div>
       </a>
       {{ end }}
     </div>
-    <div class="section-footer">
-      <a href="/projects/" class="btn-text">View All Projects</a>
+  </div>
+</section>
+
+<!-- About Chris -->
+<section class="about-section" style="background-color: var(--bg);">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-text">
+        <span class="section-eyebrow">About Chris Traver</span>
+        <h2>Six generations of Montana roots. 18 years of hardwood floors.</h2>
+        <p>Chris grew up in Bozeman — a <strong>sixth-generation Montana native</strong> who spent 18 years doing one thing across western Montana: hardwood floors. In 2023, he relocated to Helena for the housing stock — block after block of turn-of-the-century homes with original fir and pine buried under decades of carpet.</p>
+        <p>He's mentored <strong>four sons in the trade</strong>. The Traver name goes on every floor we lay, and that means something to us.</p>
+        <a href="/about-us/" class="btn-text">Meet Chris</a>
+      </div>
+      <div class="about-photo">
+        <img src="/images/traver-family-helena-mt.webp" alt="The Traver family — Chris Traver and sons, hardwood flooring craftsmen in Helena, Montana" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="testimonials-section">
+<!-- Testimonials -->
+<section class="testimonials-section" style="background-color: var(--bg-dark);">
   <div class="container">
     <div class="section-header">
-      <p class="section-eyebrow">Testimonials</p>
-      <h2>What Our Clients Say</h2>
-      <a href="{{ .Site.Params.social.google }}" target="_blank" rel="noopener noreferrer" class="google-reviews-badge">
-        <span class="google-reviews-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
-        <span class="google-reviews-text">5.0 from 6 reviews on Google</span>
-      </a>
+      <span class="section-eyebrow">What clients say</span>
+      <h2>The floors speak for themselves. So do the clients.</h2>
     </div>
 
-    {{ with index .Params.testimonials 0 }}
-    <blockquote class="testimonial-featured">
-      <p class="testimonial-featured-text">"{{ .quote }}"</p>
-      <footer class="testimonial-featured-author">
-        <div class="testimonial-avatar">{{ substr .name 0 1 }}</div>
-        <div>
-          <cite class="testimonial-name">{{ .name }}</cite>
-          <div class="testimonial-location">{{ .location }}</div>
-        </div>
-      </footer>
-    </blockquote>
-    {{ end }}
-
     <div class="testimonials-grid">
-      {{ range after 1 (first 3 .Params.testimonials) }}
+      {{ range first 3 .Params.testimonials }}
       <div class="testimonial-card">
-        <div class="testimonial-stars">
-          <span role="img" aria-label="5 out of 5 stars">{{ range seq 5 }}★{{ end }}</span>
-        </div>
+        <span class="quote-mark">"</span>
         <p class="testimonial-text">"{{ .quote }}"</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">{{ substr .name 0 1 }}</div>
-          <div>
-            <div class="testimonial-name">{{ .name }}</div>
-            <div class="testimonial-location">{{ .location }}</div>
-          </div>
-        </div>
+        <span class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+        <span class="testimonial-name">{{ .name }} · {{ .location }}</span>
       </div>
       {{ end }}
     </div>
-  </div>
-</section>
 
-<!-- FAQ Section -->
-<section class="faq-section" style="background-color: var(--cream);">
-  <div class="container">
-    <div class="section-header">
-      <p class="section-eyebrow">FAQ</p>
-      <h2>Frequently Asked Questions</h2>
-      <p class="section-subhead">Answers to the questions we hear most from homeowners across western Montana.</p>
-    </div>
-    <div class="faq-container">
-      {{ partial "faq-accordion.html" $.Site.Data.faq.homepage }}
-    </div>
-    <div class="section-footer">
-      <a href="/faq/" class="btn-text">View All FAQs</a>
-    </div>
+    <a href="{{ .Site.Params.social.google }}" target="_blank" rel="noopener noreferrer" class="reviews-link">
+      <span class="reviews-link-stars">★★★★★</span>
+      <span class="reviews-link-text"><strong>5.0 on Google</strong> · Read all reviews →</span>
+    </a>
   </div>
 </section>
 

@@ -1,13 +1,14 @@
 {{ define "main" }}
 <section class="page-hero">
-  <div class="container">
-    <p class="hero-eyebrow">Portfolio</p>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Portfolio</span>
     <h1>Our Work</h1>
-    <p class="hero-subtitle">A look at recent projects across Montana — from Big Sky chalets to historic Helena homes.</p>
+    <p class="hero-sub">A look at recent projects across Montana — from Big Sky chalets to historic Helena homes.</p>
   </div>
 </section>
 
-<section class="projects-section" style="background-color: var(--cream);" x-data="{ filter: 'all' }">
+<section class="projects-section" style="background-color: var(--bg);" x-data="{ filter: 'all' }">
   <div class="container">
     <div class="project-filters" role="group" aria-label="Filter projects by service type">
       <button class="filter-btn" :class="{ 'active': filter === 'all' }" @click="filter = 'all'">All</button>

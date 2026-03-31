@@ -60,7 +60,7 @@ Pushes to `master` trigger GitHub Actions → Docker build → push to Docker Hu
 
 ## Styling
 
-Custom CSS with CSS variables — no utility framework. Color palette is wood-inspired warm tones with walnut/sand/grain primaries and slate/sage secondaries. Fonts: Playfair Display (headings, serif) and Source Sans 3 (body, sans-serif) loaded from Google Fonts. See `ui-guide.html` for the complete visual reference including color swatches, typography specimens, and component patterns.
+Custom CSS with CSS variables — no utility framework. Color palette named "Aged Fir at Dusk" — dark espresso/walnut tones with amber accent. Fonts: Playfair Display (headings, serif, weight 700) and Source Sans 3 (body, sans-serif) loaded from Google Fonts. See `traver-design-system.html` for the complete visual reference and `traver-hardwood-brand-guide.md` for brand rules.
 
 ## Content Pages
 
@@ -85,44 +85,46 @@ Craftsman, rooted, trustworthy. A 6th-generation Montana native with 18 years of
 **Trust and confidence.** Visitors should feel safe choosing Traver — this is clearly a skilled, established craftsman who stands behind his work. The site earns trust through real project photography, specific details, named awards, and a visible family story.
 
 ### Aesthetic Direction
-Warm, editorial, craft-forward. The visual language draws from the logo's wood tones — walnut brown, milled-grain sand, parchment paper. The feel should be a well-kept workshop: warm, tactile, grounded. Never corporate, never generic, never sterile.
+Warm, craft-forward, photo-first. The palette named "Aged Fir at Dusk" is drawn from the floors themselves — aged fir, white oak, walnut endgrain lit by golden-hour light. Dark navigation and dark sections create contrast and authority. Never corporate, never generic, never sterile.
 
-**Color palette** (see `ui-guide.html` for full swatches):
-- Primary wood tones: Walnut `#4A2E14` (brand anchor, headings, primary CTAs), Oak `#7C4F28` (hover states, borders, links), Sand `#C8A97E` (accents, eyebrows, borders), Grain `#E8D5BC` (subtle fills)
-- Warm neutral backgrounds: Parchment `#F5EEE4` (alt sections), Cream `#FAF6F1` (default sections), Warm White `#FDFCFA` (page bg, cards). **Never use pure white `#FFFFFF` as a background.**
-- Secondary accents: Slate `#2C3A47` (footer, dark sections), Sage `#6B7C5A` (phone CTA, location tags), Sage Pale `#E8EEE3` (location badge bg)
-- Text: Primary `#1E1A16`, Secondary `#5A4E43`, Muted `#9A8E83`
-- No cool blues, no purples, no neons. The palette stays in the warm brown/tan/sand family with slate and sage as the only cool tones.
+**Color palette** (see `traver-design-system.html` for full swatches):
+- Backgrounds: `--bg: #FAF7F2` (page bg), `--surface: #F0EBE3` (alt sections), `--border: #DDD6CC`
+- Dark tones: `--bg-mid: #2E2318` (nav, portfolio, testimonials, footer), `--bg-dark: #1C1710` (proof bar, hero overlays)
+- Text: `--text: #1C1710` (primary), `--muted: #8C7E6E` (body copy, captions), `--text-inv: #FAF7F2` (on dark)
+- Accent: `--accent: #C8882A` (CTAs, eyebrows, proof numbers, CTA strip bg), `--accent-light: #E8AA52` (hover states, phone number on dark bg)
+- No cool blues, no purples, no neons. No sage green. The palette stays in the warm brown/tan/amber family.
 
 **Typography:**
-- Display/headings: Playfair Display (serif), weight 400 (normal), in Walnut `#4A2E14`. All heading levels use Playfair — this is the brand's editorial warmth.
-- Body/UI: Source Sans 3 (sans-serif). Body at 16px/1.75 line-height. Subheads at 18px weight 300 (light).
-- Eyebrow/label: Source Sans 3 at 11px, weight 600, uppercase, `letter-spacing: 0.12em`, in Sand `#C8A97E`.
+- Display/headings: Playfair Display (serif), weight **700** (bold). Hero headline: `clamp(52px, 7vw, 88px)`. Section headlines: `clamp(32px, 4vw, 48px)`.
+- Body/UI: Source Sans 3 (sans-serif). Body at 17px/1.75 line-height, color `--muted`.
+- Eyebrow/label: Source Sans 3 at 11px, weight 600, uppercase, `letter-spacing: 0.18em`, color `--accent`.
 - **Never use Inter, Roboto, or system sans-serif fonts.** Two fonts only: Playfair Display + Source Sans 3.
 
 **Component style:**
-- Buttons: sharp corners (`border-radius: 2px`), uppercase text with letter-spacing, 14px font-size. Primary = Walnut bg / Grain text. Phone CTA = Sage bg / white text.
-- Cards: subtle `border-light` with Sand top-accent border on service cards. Minimal shadows. Cream/warm-white backgrounds.
-- Testimonials: Parchment bg, left Sand border accent, quote in Playfair italic.
-- Nav: Warm White bg with Sand-tinted bottom border, sticky on scroll. Phone number always visible on desktop.
-- Footer: Slate `#2C3A47` background (not Walnut). Three-column layout.
+- Buttons: **square** (no border-radius), uppercase text with letter-spacing, 13px font-size. Primary = Accent bg / white text. Ghost = transparent + white border (on dark). White = white bg / accent text (on CTA strip).
+- Service cards: Numbered (01-04), `--border` top accent, hover changes to `--accent` border.
+- Testimonials: Dark bg (`--bg-mid`), large amber quote marks, Playfair italic white text.
+- Nav: Dark bg (`--bg-mid`), text-based logo with "Helena, Montana" tagline, phone number in `--accent-light`, "Get Estimate" CTA in `--accent`.
+- Footer: Dark bg (`--bg-dark`). Four-column layout (brand, services, company, contact).
+- CTA strip: `--accent` background, white buttons. Headline left, buttons right.
 
 **Layout:**
-- Content container: `max-w-4xl` (896px) — narrower, editorial feel
-- Body copy max-width: 640px for readability
-- Section vertical padding: minimum 64px top and bottom
-- Section backgrounds alternate between Cream and Parchment
-- Photography and hero sections can break to full bleed
+- Content container: `max-width: 1200px` — wider, photo-forward
+- Section vertical padding: 88–96px
+- Section backgrounds alternate between `--bg` and `--surface`, with `--bg-mid` and `--bg-dark` for dark sections
+- Hero: Full-bleed, bottom-left aligned content (not centered), gradient overlay
+- Proof bar: 4-stat dark strip below hero with large Playfair numbers in accent
+- Photography and hero sections break to full bleed
 
-Photos are real project work — no stock photography ever. Images dominate over text. See `ui-guide.html` for complete component patterns and `brand-guide.md` for voice specifications.
+Photos are real project work — no stock photography ever. Images dominate over text. See `traver-design-system.html` for complete component patterns, `traver-copy-package.html` for all copy, and `traver-hardwood-brand-guide.md` for voice specifications.
 
 ### Accessibility
-WCAG AA compliance. Ensure sufficient contrast ratios, keyboard navigation, descriptive alt text on all images, proper focus indicators using Sand ring color (`box-shadow: 0 0 0 3px rgba(200,169,126,0.2)` on focus), and aria-labels on decorative elements like star ratings.
+WCAG AA compliance. Ensure sufficient contrast ratios, keyboard navigation, descriptive alt text on all images, proper focus indicators using accent ring color (`box-shadow: 0 0 0 3px rgba(200, 136, 42, 0.35)` on focus), and aria-labels on decorative elements like star ratings.
 
 ### Design Principles
 1. **Photos first, text second** — this is a craft portfolio site. Images should always be larger than text. The wood IS the content.
-2. **Warm everything** — alternate between Cream `#FAF6F1` and Parchment `#F5EEE4` for section backgrounds. Never use pure white or cool grays. Every surface should feel warm.
+2. **Warm everything** — alternate between `--bg` and `--surface` for light sections, use `--bg-mid` and `--bg-dark` for dark sections. Never use pure white or cool grays.
 3. **Specific over generic** — "reclaimed Australian Karri wood" not "exotic hardwood." Real award names, real city names, real phone numbers visible everywhere.
-4. **One clear action** — maximum one primary CTA per section. "Request an Estimate" is always the primary conversion action; phone (with full number) is secondary in Sage green.
+4. **One clear action** — maximum one primary CTA per section. "Request an Estimate" is always the primary conversion action; phone (with full number) is secondary.
 5. **Earn trust, don't claim it** — show the work, name the awards, quote real clients with their city. Never say "the best" without a verifiable source.
-6. **Editorial, not template** — Playfair Display headings, narrow content column, generous whitespace, sharp button corners. The site should feel designed, not assembled from a UI kit.
+6. **Dark contrast** — the dark nav, proof bar, portfolio, and testimonial sections create rhythm and authority. The amber accent on dark backgrounds is the site's signature visual.

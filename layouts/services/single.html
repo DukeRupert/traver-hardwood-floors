@@ -3,30 +3,98 @@
 {{ end }}
 
 {{ define "main" }}
-<section class="page-hero" {{ with .Params.hero_image }}style="background-image: linear-gradient(var(--color-overlay), var(--color-overlay)), url('{{ . }}'); background-size: cover; background-position: center;"{{ end }}>
-  <div class="container">
-    <nav class="service-breadcrumb" aria-label="Breadcrumb">
-      <a href="/services/">Services</a>
-      <span class="breadcrumb-separator" aria-hidden="true">/</span>
-      <span>{{ .Title }}</span>
-    </nav>
+<!-- Service Hero -->
+<section class="page-hero" {{ with .Params.hero_image }}style="background-image: linear-gradient(to top, rgba(28,23,16,0.88) 0%, rgba(28,23,16,0.45) 50%, rgba(28,23,16,0.15) 100%), url('{{ . }}'); background-size: cover; background-position: center;"{{ end }}>
+  <div class="hero-content">
+    <span class="hero-eyebrow">{{ .Params.hero_eyebrow | default (printf "%s · Helena & Western Montana" .Title) }}</span>
     <h1>{{ .Params.headline | default .Title }}</h1>
-    <p class="hero-subtitle">{{ .Params.subtitle }}</p>
+    <p class="hero-sub">{{ .Params.subtitle }}</p>
+    <div class="hero-actions">
+      <a href="/contact-us/" class="btn btn-primary">Request an Estimate</a>
+      <a href="/projects/" class="btn btn-ghost">See Our Work</a>
+    </div>
   </div>
 </section>
 
-<section class="service-intro" style="background-color: var(--cream);">
-  <div class="container">
-    <p class="section-subhead">{{ .Params.intro }}</p>
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Home</a>
+    <span class="breadcrumb-sep">·</span>
+    <a href="/services/">Services</a>
+    <span class="breadcrumb-sep">·</span>
+    <span class="breadcrumb-current">{{ .Title }}</span>
+  </div>
+</div>
+
+<!-- Feature + Sidebar Layout -->
+<section style="background-color: var(--bg); padding: 88px 0;">
+  <div class="content-layout">
+    <!-- Main Content -->
+    <div class="content-main">
+      {{ with .Params.feature_eyebrow }}
+      <span class="section-eyebrow">{{ . }}</span>
+      {{ end }}
+      {{ with .Params.feature_headline }}
+      <h2 style="margin-bottom: 28px;">{{ . }}</h2>
+      {{ end }}
+      {{ with .Params.intro }}
+      <p>{{ . }}</p>
+      {{ end }}
+      {{ with .Content }}
+      {{ . }}
+      {{ end }}
+    </div>
+
+    <!-- Sidebar -->
+    <div>
+      <div class="sidebar-cta">
+        <span class="sidebar-cta-eyebrow">Free estimate</span>
+        <h3 class="sidebar-cta-headline">Ready to talk about your floor?</h3>
+        <p class="sidebar-cta-body">Free estimates in Helena. Site visit deposits credited in Butte, Bozeman & beyond.</p>
+        <a href="/contact-us/" class="sidebar-btn">Request an Estimate</a>
+        <a href="tel:{{ .Site.Params.phoneTel }}" class="sidebar-btn-ghost">Call {{ .Site.Params.phoneFormatted }}</a>
+        <hr class="sidebar-divider">
+        <span class="sidebar-services-label">Other services</span>
+        {{ range .Site.Menus.services }}
+        <a href="{{ .URL }}" class="sidebar-service-link{{ if eq $.Title .Name }} current{{ end }}">
+          {{ .Name }}
+          <span>→</span>
+        </a>
+        {{ end }}
+      </div>
+    </div>
   </div>
 </section>
 
-{{ if .Params.gallery }}
-<section class="service-gallery" style="background-color: var(--parchment);">
+{{ if .Params.process_steps }}
+<!-- Process Steps -->
+<section class="process-section" style="background-color: var(--surface);">
   <div class="container">
     <div class="section-header">
-      <p class="section-eyebrow">Our Work</p>
-      <h2>Our Work</h2>
+      <span class="section-eyebrow">{{ .Params.process_eyebrow | default "How it works" }}</span>
+      <h2>{{ .Params.process_headline | default "From estimate to finished floor." }}</h2>
+    </div>
+    <div class="process-grid">
+      {{ range $i, $step := .Params.process_steps }}
+      <div class="process-step">
+        <span class="process-num">{{ printf "%02d" (add $i 1) }}</span>
+        <h3 class="process-step-title">{{ $step.title }}</h3>
+        <p class="process-step-body">{{ $step.description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ if .Params.gallery }}
+<!-- Gallery -->
+<section class="service-gallery" style="background-color: var(--bg);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Our Work</span>
+      <h2>{{ .Title }} Gallery</h2>
     </div>
     <div class="gallery-grid">
       {{ range .Params.gallery }}
@@ -43,10 +111,11 @@
 {{ end }}
 
 {{ if .Params.features }}
-<section class="service-features" style="background-color: var(--cream);">
+<!-- Features List -->
+<section class="service-features" style="background-color: var(--surface);">
   <div class="container">
     <div class="section-header">
-      <p class="section-eyebrow">{{ .Title }}</p>
+      <span class="section-eyebrow">{{ .Title }}</span>
       <h2>{{ .Params.features_title | default "What Sets Us Apart" }}</h2>
     </div>
     <div class="features-list">
@@ -59,14 +128,6 @@
       </div>
       {{ end }}
     </div>
-  </div>
-</section>
-{{ end }}
-
-{{ with .Content }}
-<section class="page-content" style="background-color: var(--parchment);">
-  <div class="container">
-    {{ . }}
   </div>
 </section>
 {{ end }}
