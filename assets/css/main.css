@@ -3202,6 +3202,132 @@ section {
 
 
 /* ===========================
+   Delight — Hero Reveal
+   =========================== */
+@keyframes hero-drift {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+
+.hero-bg-img {
+  animation: hero-drift 20s ease-out forwards;
+}
+
+@keyframes board-lay {
+  0%   { opacity: 0; transform: translateX(-40px); }
+  70%  { opacity: 1; transform: translateX(2px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.hero-content .hero-logo,
+.hero-content .hero-eyebrow,
+.hero-content h1,
+.hero-content .hero-sub,
+.hero-content .hero-actions {
+  opacity: 0;
+  animation: board-lay 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-content .hero-logo    { animation-delay: 0.3s; }
+.hero-content .hero-eyebrow { animation-delay: 0.9s; }
+.hero-content h1            { animation-delay: 1.5s; }
+.hero-content .hero-sub     { animation-delay: 2.2s; }
+.hero-content .hero-actions { animation-delay: 2.9s; }
+
+
+/* ===========================
+   Delight — Scroll Reveal
+   =========================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children within a reveal group */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+.reveal-stagger.is-visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+.reveal-stagger.is-visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.55s; }
+.reveal-stagger.is-visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.75s; }
+
+
+/* ===========================
+   Delight — Service Card Accent Sweep
+   =========================== */
+.service-card-with-image .service-card-body {
+  position: relative;
+  border-top-color: transparent;
+}
+
+.service-card-with-image .service-card-body::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--accent);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card-with-image:hover .service-card-body::before {
+  width: 100%;
+}
+
+/* Keep the static border as fallback for non-hover */
+.service-card-with-image .service-card-body {
+  border-top: 2px solid var(--border);
+}
+
+
+/* ===========================
+   Delight — Quote Mark Bloom
+   =========================== */
+.quote-mark {
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.testimonial-card .quote-mark {
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.testimonial-card.is-visible .quote-mark {
+  transform: scale(1);
+  opacity: 0.4;
+}
+
+
+/* ===========================
+   Delight — Proof Bar Entrance
+   =========================== */
+.proof-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.proof-bar.is-visible .proof-item:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+.proof-bar.is-visible .proof-item:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+.proof-bar.is-visible .proof-item:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
+.proof-bar.is-visible .proof-item:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 1.1s; }
+
+
+/* ===========================
    Reduced Motion
    =========================== */
 @media (prefers-reduced-motion: reduce) {
@@ -3210,5 +3336,27 @@ section {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-stagger > *,
+  .proof-item,
+  .testimonial-card .quote-mark {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-content .hero-logo,
+  .hero-content .hero-eyebrow,
+  .hero-content h1,
+  .hero-content .hero-sub,
+  .hero-content .hero-actions {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    animation: none !important;
+  }
+
+  .hero-bg-img {
+    animation: none !important;
   }
 }

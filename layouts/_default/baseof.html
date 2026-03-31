@@ -210,6 +210,56 @@
     <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=876484957710949&ev=PageView&noscript=1"/>
   </noscript>
 
+  <!-- Scroll Reveal & Delight -->
+  <script>
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal, .reveal-stagger, .proof-bar, .testimonial-card').forEach(function(el) {
+        observer.observe(el);
+      });
+
+      // Proof bar number count-up
+      var proofObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.querySelectorAll('.proof-number').forEach(function(el) {
+            var text = el.textContent.trim();
+            var match = text.match(/^(\d+)/);
+            if (!match) return;
+            var target = parseInt(match[1], 10);
+            var suffix = text.slice(match[1].length);
+            var duration = 2200;
+            var start = performance.now();
+            el.textContent = '0' + suffix;
+            function tick(now) {
+              var elapsed = now - start;
+              var progress = Math.min(elapsed / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              var current = Math.round(target * eased);
+              el.textContent = current + suffix;
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          });
+          proofObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.3 });
+
+      var proofBar = document.querySelector('.proof-bar');
+      if (proofBar) proofObserver.observe(proofBar);
+    })();
+  </script>
+
   {{ block "scripts" . }}{{ end }}
 </body>
 </html>

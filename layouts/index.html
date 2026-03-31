@@ -84,10 +84,10 @@
 <section class="feature-section" style="background-color: var(--bg);">
   <div class="container">
     <div class="feature-grid">
-      <div class="feature-image">
+      <div class="feature-image reveal">
         <img src="/images/custom-hardwood-installation-montana-home.webp" alt="Custom hardwood floor installation in Montana home" loading="lazy">
       </div>
-      <div class="feature-content">
+      <div class="feature-content reveal">
         <span class="section-eyebrow">Built for Montana</span>
         <h2>Dry winters are hard on hardwood. We know what survives them.</h2>
         <p>Montana's forced-air heating pulls indoor humidity to 20% or lower from October through April. Most wood floors aren't laid with that in mind. Ours are.</p>
@@ -102,11 +102,11 @@
 <!-- Services -->
 <section class="services-section" style="background-color: var(--surface);">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-eyebrow">What we do</span>
       <h2>One material. Four ways to work with it.</h2>
     </div>
-    <div class="services-grid-compact">
+    <div class="services-grid-compact reveal-stagger">
       <a href="/installation/" class="service-card-compact service-card-with-image">
         <div class="service-card-image">
           <img src="/images/installation_1.jpg" alt="Custom hardwood floor installation" loading="lazy">
@@ -158,14 +158,14 @@
 <!-- Portfolio -->
 <section id="our-work" class="our-work-section" style="background-color: var(--bg-mid);">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div>
         <span class="section-eyebrow">Our Work</span>
         <h2>Recent projects across Montana</h2>
       </div>
       <a href="/projects/" class="portfolio-all">View all projects</a>
     </div>
-    <div class="projects-showcase">
+    <div class="projects-showcase reveal-stagger">
       {{ range first 3 (where .Site.RegularPages "Section" "projects") }}
       <a href="{{ .Permalink }}" class="project-showcase-card">
         <div class="project-showcase-image">
@@ -189,14 +189,14 @@
 <section class="about-section" style="background-color: var(--bg);">
   <div class="container">
     <div class="about-inner">
-      <div class="about-text">
+      <div class="about-text reveal">
         <span class="section-eyebrow">About Chris Traver</span>
         <h2>Six generations of Montana roots. 18 years of hardwood floors.</h2>
         <p>Chris grew up in Bozeman — a <strong>sixth-generation Montana native</strong> who spent 18 years doing one thing across western Montana: hardwood floors. In 2023, he relocated to Helena for the housing stock — block after block of turn-of-the-century homes with original fir and pine buried under decades of carpet.</p>
         <p>He's mentored <strong>four sons in the trade</strong>. The Traver name goes on every floor we lay, and that means something to us.</p>
         <a href="/about-us/" class="btn-text">Meet Chris</a>
       </div>
-      <div class="about-photo">
+      <div class="about-photo reveal">
         <img src="/images/traver-family-helena-mt.webp" alt="The Traver family — Chris Traver and sons, hardwood flooring craftsmen in Helena, Montana" loading="lazy">
       </div>
     </div>
@@ -206,12 +206,12 @@
 <!-- Testimonials -->
 <section class="testimonials-section" style="background-color: var(--bg-dark);">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-eyebrow">What clients say</span>
       <h2>The floors speak for themselves. So do the clients.</h2>
     </div>
 
-    <div class="testimonials-grid">
+    <div class="testimonials-grid reveal-stagger">
       {{ range first 3 .Params.testimonials }}
       <div class="testimonial-card">
         <span class="quote-mark">"</span>
