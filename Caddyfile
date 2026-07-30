@@ -16,6 +16,12 @@
 	# Compression
 	encode gzip zstd
 
+	# Permanent redirects for consolidated pages.
+	# /refinishing/ was merged into /sanding-and-finishing/ — Hugo also emits an
+	# alias page, but a real 301 passes link equity properly.
+	redir /refinishing /sanding-and-finishing/ 301
+	redir /refinishing/ /sanding-and-finishing/ 301
+
 	# Proxy API requests to Go backend
 	handle /api/* {
 		request_body {

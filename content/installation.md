@@ -1,5 +1,6 @@
 ---
 title: "Installation"
+seo_title: "Hardwood Floor Installation | Helena & Bozeman, MT | Traver Hardwood Floors"
 description: "Hardwood floor installation in Helena, Bozeman, Butte, and Big Sky. Serving western Montana with 18 years of expertise on concrete slabs, traditional subfloors, and custom patterns."
 featured_image: "/images/installation_1.jpg"
 hero_image: "/images/installation_1.jpg"

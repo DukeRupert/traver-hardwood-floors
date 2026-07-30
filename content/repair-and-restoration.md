@@ -1,5 +1,6 @@
 ---
 title: "Repair & Restoration"
+seo_title: "Hardwood Floor Repair & Restoration | Helena, MT | Traver Hardwood Floors"
 description: "Historic hardwood floor restoration and repair in Helena, Bozeman, Butte, and across Montana. 18 years of expertise restoring water-damaged, worn, and hidden floors — including original fir and pine under decades of carpet."
 featured_image: "/images/repair_1.jpg"
 hero_image: "/images/repair_1.jpg"

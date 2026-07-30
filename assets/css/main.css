@@ -768,7 +768,6 @@ body.menu-open {
   }
 }
 
-.hero h1,
 .hero-headline {
   font-family: var(--font-display);
   font-size: clamp(40px, 7vw, 88px);
@@ -776,24 +775,46 @@ body.menu-open {
   color: var(--text-inv);
   line-height: 1.0;
   letter-spacing: -0.02em;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
   max-width: 720px;
 }
 
-.hero h1 em,
 .hero-headline em {
   font-style: italic;
   font-weight: 400;
   color: var(--accent-light);
 }
 
-.hero p,
+/* Homepage h1 — sits under the display headline as a visible subhead so the
+   primary keyword and service area are in the page's h1, not only the title tag. */
+.hero-h1 {
+  font-family: var(--font-body);
+  font-size: clamp(19px, 2.2vw, 23px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: rgba(250, 247, 242, 0.92);
+  max-width: 620px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 767px) {
+  .hero-h1 {
+    font-size: 17px;
+    line-height: 1.35;
+    max-width: 340px;
+  }
+}
+
+/* Scoped to .hero-sub rather than `.hero p` — the display headline is a <p> so
+   that the keyword-carrying subhead can be the h1, and an element selector here
+   would outrank .hero-headline. */
 .hero-sub {
   font-size: 18px;
   color: rgba(250, 247, 242, 0.7);
   max-width: 520px;
   line-height: 1.6;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   font-weight: 300;
 }
 
@@ -3257,17 +3278,20 @@ section {
 .hero-content .hero-logo,
 .hero-content .hero-eyebrow,
 .hero-content h1,
+.hero-content .hero-headline,
 .hero-content .hero-sub,
 .hero-content .hero-actions {
   opacity: 0;
   animation: board-lay 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.hero-content .hero-logo    { animation-delay: 0.3s; }
-.hero-content .hero-eyebrow { animation-delay: 0.9s; }
-.hero-content h1            { animation-delay: 1.5s; }
-.hero-content .hero-sub     { animation-delay: 2.2s; }
-.hero-content .hero-actions { animation-delay: 2.9s; }
+.hero-content .hero-logo     { animation-delay: 0.3s; }
+.hero-content .hero-eyebrow  { animation-delay: 0.9s; }
+.hero-content h1             { animation-delay: 1.5s; }
+.hero-content .hero-headline { animation-delay: 1.5s; }
+.hero-content .hero-h1       { animation-delay: 1.9s; }
+.hero-content .hero-sub      { animation-delay: 2.5s; }
+.hero-content .hero-actions  { animation-delay: 3.1s; }
 
 
 /* ===========================
@@ -3384,6 +3408,7 @@ section {
   .hero-content .hero-logo,
   .hero-content .hero-eyebrow,
   .hero-content h1,
+  .hero-content .hero-headline,
   .hero-content .hero-sub,
   .hero-content .hero-actions {
     opacity: 1 !important;

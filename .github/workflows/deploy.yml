@@ -15,6 +15,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # Full history so Hugo's enableGitInfo can resolve commit dates for
+          # sitemap lastmod. The default shallow clone leaves them empty.
+          fetch-depth: 0
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3

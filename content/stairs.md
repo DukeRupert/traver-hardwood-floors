@@ -1,5 +1,6 @@
 ---
 title: "Stairs"
+seo_title: "Custom Hardwood Stairs | Helena & Bozeman, MT | Traver Hardwood Floors"
 description: "Custom hardwood stair installation and refinishing in Helena, Bozeman, Butte, and Big Sky. Chris Traver brings 18 years of expertise to slab treads, carpet-to-hardwood conversions, and staircase refinishing across western Montana."
 featured_image: "/images/stairs_1.jpg"
 hero_image: "/images/stairs_1.jpg"

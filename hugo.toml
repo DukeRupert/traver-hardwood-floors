@@ -2,6 +2,13 @@ baseURL = 'https://www.traverhardwoodfloors.com/'
 languageCode = 'en-us'
 title = 'Traver Hardwood Floors'
 
+# Use git commit dates for sitemap lastmod on pages without a date in front matter
+enableGitInfo = true
+
+# No categories or tags — an empty block disables the default taxonomies so
+# Hugo stops emitting thin /categories/ and /tags/ pages into the sitemap.
+[taxonomies]
+
 [params]
   description = 'Hardwood floor installation, refinishing & restoration in Helena & Bozeman. 18 years, water-based finishes, historic homes. Free estimates.'
   tagline = '18 Years. Montana Roots. Your Floors.'
@@ -31,9 +38,13 @@ title = 'Traver Hardwood Floors'
     url = '/about-us/'
     weight = 3
   [[menu.main]]
+    name = 'FAQ'
+    url = '/faq/'
+    weight = 4
+  [[menu.main]]
     name = 'Contact'
     url = '/contact-us/'
-    weight = 4
+    weight = 5
 
   [[menu.services]]
     name = 'Installation'
