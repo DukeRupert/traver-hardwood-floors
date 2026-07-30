@@ -10,7 +10,7 @@ featured_image: "/images/sanding_1.jpg"
 hero_image: "/images/sanding_1.jpg"
 type: "services"
 hero_eyebrow: "Hardwood Floor Refinishing · Helena & Western Montana"
-headline: "There's a floor under there. Let's find out what it can be."
+headline: "There's a hardwood floor under there. Let's find out what refinishing can do."
 subtitle: "Sand down to bare wood, assess what's there, and finish it right for Montana's climate. Most floors that look finished are further from done than their owners think."
 feature_eyebrow: "Water-based finishing — and why it matters here"
 feature_headline: "The finish choice matters as much as the sanding."
@@ -79,7 +79,7 @@ That said, there are real situations where replacement makes more sense:
 
 We'll tell you which situation you're in during the estimate. If replacement is the better path, we'll say so.
 
-## Finish Selection in a Montana Climate
+## Water-Based vs. Oil-Based Finish in a Montana Climate
 
 Most of the country treats finish selection as an aesthetic choice. In Montana, it's also a practical one.
 
@@ -109,7 +109,7 @@ Most refinishing projects run 3–5 days from start to finish. Here's what that 
 
 If your floors have isolated damage — a section of cupped boards near a radiator, a patch of pet staining, boards that are too far gone to sand — we'll repair or replace those sections before sanding begins so the final floor is consistent throughout.
 
-## Keeping Your Refinished Floors in Good Shape
+## How to Care for Refinished Hardwood Floors
 
 A properly applied finish on sound hardwood should last 7–10 years before it needs another full refinish. What happens between now and then is mostly about maintenance.
 

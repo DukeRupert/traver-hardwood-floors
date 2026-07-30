@@ -6,7 +6,7 @@ featured_image: "/images/repair_1.jpg"
 hero_image: "/images/repair_1.jpg"
 type: "services"
 hero_eyebrow: "Hardwood Floor Repair & Restoration · Helena & Western Montana"
-headline: "Other contractors said it was beyond saving. We've heard that before."
+headline: "Other contractors said the hardwood was beyond repair. We've heard that before."
 subtitle: "Flood damage, pet damage, century-old fir under carpet, boards that need matching — this is the work most flooring contractors don't want. It's the work we're best at."
 feature_eyebrow: "What restoration actually means"
 feature_headline: "Reading the floor before deciding what it can become."
@@ -29,7 +29,7 @@ gallery:
     caption: "Before and after — water damage repair and full refinish"
 ---
 
-## What We Find in Montana Homes
+## What We Find Under the Carpet in Old Montana Homes
 
 Western Montana's housing stock is old in ways that matter for floor restoration. Helena's historic district — the Gulch, Last Chance Gulch, and the surrounding neighborhoods — holds homes built in the 1880s through the early 1900s, many of them with original fir or pine floors still underfoot. Those floors have survived more than a century of hard use. They've been painted, carpeted, and in some cases sealed under layers of vinyl going back to the 1960s.
 
@@ -56,7 +56,7 @@ Here's the general sequence for a repair and restoration project:
 
 Most repair and restoration projects run 4–7 days depending on the extent of the damage and the size of the floor. A heavily damaged historic floor in a large room takes longer than a localized water repair in a kitchen.
 
-## What Can Be Saved — and What Can't
+## Which Damaged Hardwood Floors Can Be Saved — and Which Can't
 
 The honest answer is: most floors can be restored, or at least significantly improved. Hardwood is thick enough to be sanded multiple times over its life, and old-growth fir is especially forgiving because of its density. Even floors that look rough — deep scratches, dark staining, a surface that's been through decades of traffic — usually have good wood underneath.
 

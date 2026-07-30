@@ -6,7 +6,7 @@ featured_image: "/images/installation_1.jpg"
 hero_image: "/images/installation_1.jpg"
 type: "services"
 hero_eyebrow: "Hardwood Floor Installation · Helena & Western Montana"
-headline: "The floor doesn't follow the plan. The plan follows the floor."
+headline: "Hardwood floor installation that fits the house, not the plan."
 subtitle: "Custom patterns, species selection, and subfloor work that most contractors won't touch. Every installation is fitted to the house — not templated from the last one."
 feature_eyebrow: "What installation looks like here"
 feature_headline: "Species selection, pattern work, and transitions done right."
@@ -49,7 +49,7 @@ gallery:
     caption: "Walnut Celtic knot corners with oak field, oil finish"
 ---
 
-## Wood Species and Montana's Climate
+## Choosing a Hardwood Species for Montana's Climate
 
 Montana's dry winters change the calculus on wood selection. When forced-air heating and wood stoves drop indoor humidity into the 20% range, wood contracts — and a species that performs beautifully in a humid climate can gap, crack, or cup here.
 
@@ -59,7 +59,7 @@ Reclaimed wood is a different conversation. We work with reclaimed material regu
 
 Keeping indoor humidity between 35–55% is the single best thing you can do for your floors year-round. If you heat primarily with a wood stove, a humidifier in the main living area makes a noticeable difference in how your floors look and perform through the winter.
 
-## Acclimation, Subfloors, and What Happens Before the First Board Goes Down
+## Acclimation and Subfloor Prep Before Installation Starts
 
 The prep work is where installations succeed or fail. Here's what that looks like for a typical project.
 
@@ -69,7 +69,7 @@ The prep work is where installations succeed or fail. Here's what that looks lik
 
 **Layout planning.** Before the first board is nailed, we plan the layout — accounting for doorways, transitions, focal walls, and the natural light in the room. In a herringbone or diagonal installation, a layout mistake made on day one shows up everywhere. We don't improvise.
 
-## What to Expect: Project Timeline and Process
+## Hardwood Floor Installation Timeline: What to Expect
 
 A straightforward installation in a single room — say, a 400–600 square foot living room on a prepared subfloor — typically runs two to three days from start to finish. Larger projects, complex patterns, or jobs that include custom transitions and stair work take longer.
 
