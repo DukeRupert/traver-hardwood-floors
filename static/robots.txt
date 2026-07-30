@@ -1,8 +1,8 @@
 # robots.txt for Traver Hardwood Floors
-# https://www.traverhardwoodfloors.com
+# https://traverhardwoodfloors.com
 
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://www.traverhardwoodfloors.com/sitemap.xml
+# Sitemap location — must be the canonical (apex) host; www 301s here.
+Sitemap: https://traverhardwoodfloors.com/sitemap.xml

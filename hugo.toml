@@ -1,4 +1,7 @@
-baseURL = 'https://www.traverhardwoodfloors.com/'
+# Apex is the canonical host — the outer Caddy 301s www to this. baseURL drives
+# canonical tags, og:url, sitemap locs and schema.org url/@id, so a www value
+# here would point every one of them at a redirect.
+baseURL = 'https://traverhardwoodfloors.com/'
 languageCode = 'en-us'
 title = 'Traver Hardwood Floors'
 

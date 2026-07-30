@@ -8,7 +8,7 @@ services:
       - POSTMARK_TOKEN=${POSTMARK_TOKEN}
       - FROM_EMAIL=${FROM_EMAIL:-noreply@traverhardwoodfloors.com}
       - TO_EMAIL=${TO_EMAIL:-chris@traverhardwoodfloors.com}
-      - ALLOWED_ORIGIN=${ALLOWED_ORIGIN:-https://www.traverhardwoodfloors.com}
+      - ALLOWED_ORIGIN=${ALLOWED_ORIGIN:-https://traverhardwoodfloors.com}
       - TURNSTILE_SECRET=${TURNSTILE_SECRET}
       - SENTRY_DSN=${SENTRY_DSN:-}
     restart: unless-stopped

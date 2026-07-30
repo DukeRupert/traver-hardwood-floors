@@ -9,7 +9,7 @@ A simple Go server that handles contact form submissions and sends emails via Po
 | `POSTMARK_TOKEN` | Yes | - | Your Postmark server API token |
 | `FROM_EMAIL` | No | `noreply@traverhardwoodfloors.com` | Sender email address |
 | `TO_EMAIL` | No | `chris@traverhardwoodfloors.com` | Recipient email address |
-| `ALLOWED_ORIGIN` | No | `https://www.traverhardwoodfloors.com` | CORS allowed origin |
+| `ALLOWED_ORIGIN` | No | `https://traverhardwoodfloors.com` | CORS allowed origin |
 | `PORT` | No | `8080` | Port to run the server on |
 
 ## Building
@@ -73,7 +73,7 @@ RestartSec=5
 Environment=POSTMARK_TOKEN=your-token-here
 Environment=FROM_EMAIL=noreply@traverhardwoodfloors.com
 Environment=TO_EMAIL=chris@traverhardwoodfloors.com
-Environment=ALLOWED_ORIGIN=https://www.traverhardwoodfloors.com
+Environment=ALLOWED_ORIGIN=https://traverhardwoodfloors.com
 Environment=PORT=8080
 
 [Install]

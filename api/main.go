@@ -62,7 +62,7 @@ func loadConfig() Config {
 		PostmarkToken:   getEnv("POSTMARK_TOKEN", ""),
 		FromEmail:       getEnv("FROM_EMAIL", "noreply@traverhardwoodfloors.com"),
 		ToEmail:         getEnv("TO_EMAIL", "chris@traverhardwoodfloors.com"),
-		AllowedOrigin:   getEnv("ALLOWED_ORIGIN", "https://www.traverhardwoodfloors.com"),
+		AllowedOrigin:   getEnv("ALLOWED_ORIGIN", "https://traverhardwoodfloors.com"),
 		Port:            getEnv("API_PORT", "8080"),
 		TurnstileSecret: getEnv("TURNSTILE_SECRET", ""),
 		SentryDSN:       getEnv("SENTRY_DSN", ""),

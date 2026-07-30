@@ -60,7 +60,7 @@ FROM_EMAIL=noreply@traverhardwoodfloors.com
 TO_EMAIL=chris@traverhardwoodfloors.com
 
 # CORS - must match your public domain
-ALLOWED_ORIGIN=https://www.traverhardwoodfloors.com
+ALLOWED_ORIGIN=https://traverhardwoodfloors.com
 
 # Cloudflare Turnstile (spam protection)
 TURNSTILE_SECRET=your-turnstile-secret-key
@@ -70,13 +70,17 @@ TURNSTILE_SECRET=your-turnstile-secret-key
 
 Add the following to your main Caddy configuration (usually `/etc/caddy/Caddyfile`):
 
+The apex domain is canonical — it serves the site, and `www` redirects to it.
+This must match `baseURL` in `hugo.toml`, which drives canonical tags, `og:url`,
+and the sitemap.
+
 ```caddyfile
-www.traverhardwoodfloors.com {
+traverhardwoodfloors.com {
     reverse_proxy localhost:8082
 }
 
-traverhardwoodfloors.com {
-    redir https://www.traverhardwoodfloors.com{uri} permanent
+www.traverhardwoodfloors.com {
+    redir https://traverhardwoodfloors.com{uri} permanent
 }
 ```
 
@@ -104,7 +108,7 @@ docker compose logs
 Test the site:
 
 ```bash
-curl -I https://www.traverhardwoodfloors.com
+curl -I https://traverhardwoodfloors.com
 ```
 
 ## Updating the Site
