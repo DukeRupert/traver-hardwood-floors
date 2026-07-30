@@ -1,5 +1,7 @@
 # Git
-.git
+# .git is NOT ignored: hugo.toml sets enableGitInfo, so Hugo needs the repo to
+# resolve commit dates for sitemap lastmod. Without it the build fails outright.
+# Only the hugo-builder stage sees it; it never reaches the final image.
 .gitignore
 
 # Hugo build output
