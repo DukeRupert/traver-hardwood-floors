@@ -101,3 +101,26 @@ location /api/ {
     proxy_set_header X-Forwarded-Proto $scheme;
 }
 ```
+
+## Logging
+
+The API follows the fleet structured logging standard: one JSON object per line
+on stdout, nothing else. `time` is RFC3339 with nanoseconds, `level` is
+uppercase, and `msg` is a stable low-cardinality event name — values go in
+structured fields, never interpolated into the message.
+
+- Every request produces exactly one line: `msg":"request"` at INFO (4xx
+  included), or `msg":"request failed"` at ERROR with an `error` field for 5xx.
+- `request_id` is generated per request, returned as the `X-Request-Id`
+  response header, and attached to every other line logged while serving it.
+- `remote_ip` is the real visitor IP, read from `X-Forwarded-For` right-to-left
+  past the container's own proxy hop. See `trustedProxyHops` in `logging.go` —
+  it must stay in sync with the `trusted_proxies` setting in the `Caddyfile`.
+- `/health` is logged at DEBUG so uptime polling does not flood the log.
+- `LOG_LEVEL=debug` turns DEBUG lines on. Off in production.
+
+Caddy in the same container logs static requests in its own native JSON shape
+(`ts` epoch float, lowercase `level`, `msg":"handled request"`, nested
+`request.*`, `duration` in **seconds**, `uri` instead of `path`), which needs a
+mapping at the shipping layer. API requests are `log_skip`ped in Caddy so they
+are logged once, by this service.

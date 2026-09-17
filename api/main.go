@@ -6,9 +6,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
+	"log/slog"
 	"net/http"
 	"os"
+	"runtime/debug"
 	"strings"
 	"time"
 
@@ -77,46 +78,65 @@ func getEnv(key, fallback string) string {
 }
 
 func main() {
+	errorLog := setupLogger()
 	config := loadConfig()
 
 	if config.PostmarkToken == "" {
-		log.Fatal("POSTMARK_TOKEN environment variable is required")
+		slog.Error("missing required configuration", "variable", "POSTMARK_TOKEN")
+		os.Exit(1)
 	}
 	if config.TurnstileSecret == "" {
-		log.Fatal("TURNSTILE_SECRET environment variable is required")
+		slog.Error("missing required configuration", "variable", "TURNSTILE_SECRET")
+		os.Exit(1)
 	}
 
 	// Initialize Sentry for error tracking (optional)
 	if config.SentryDSN == "" {
-		log.Println("SENTRY_DSN not set, error tracking disabled")
+		slog.Info("error tracking disabled", "reason", "SENTRY_DSN not set")
 	} else {
 		if err := sentry.Init(sentry.ClientOptions{
 			Dsn:              config.SentryDSN,
 			SendDefaultPII:   true,
 			TracesSampleRate: 0.0,
 		}); err != nil {
-			log.Printf("Sentry init failed: %v", err)
+			slog.Error("error tracking init failed", "error", err.Error())
 		} else {
-			log.Println("Error tracking enabled")
+			slog.Info("error tracking enabled")
 		}
 		defer sentry.Flush(2 * time.Second)
 	}
 
-	http.HandleFunc("/api/contact", recoverMiddleware(corsMiddleware(config.AllowedOrigin, contactHandler(config))))
-	http.HandleFunc("/api/estimate", recoverMiddleware(corsMiddleware(config.AllowedOrigin, estimateHandler(config))))
-	http.HandleFunc("/health", recoverMiddleware(healthHandler))
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/contact", logRequests(recoverMiddleware(corsMiddleware(config.AllowedOrigin, contactHandler(config)))))
+	mux.HandleFunc("/api/estimate", logRequests(recoverMiddleware(corsMiddleware(config.AllowedOrigin, estimateHandler(config)))))
+	mux.HandleFunc(healthPath, logRequests(recoverMiddleware(healthHandler)))
 
-	log.Printf("Server starting on port %s", config.Port)
-	log.Fatal(http.ListenAndServe(":"+config.Port, nil))
+	addr := ":" + config.Port
+	server := &http.Server{
+		Addr:     addr,
+		Handler:  mux,
+		ErrorLog: errorLog,
+	}
+
+	slog.Info("server starting", "addr", addr)
+	if err := server.ListenAndServe(); err != nil {
+		slog.Error("server stopped", "error", err.Error())
+		os.Exit(1)
+	}
 }
 
 func recoverMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
-			if err := recover(); err != nil {
-				sentry.CurrentHub().Recover(err)
+			if rec := recover(); rec != nil {
+				sentry.CurrentHub().Recover(rec)
 				sentry.Flush(2 * time.Second)
-				log.Printf("Panic recovered: %v", err)
+				err := fmt.Errorf("panic: %v", rec)
+				failRequest(r, err)
+				// Stack goes in a single string field: one event, one line.
+				requestLogger(r).Error("panic recovered",
+					"error", err.Error(),
+					"stack", string(debug.Stack()))
 				http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 			}
 		}()
@@ -173,7 +193,7 @@ func contactHandler(config Config) http.HandlerFunc {
 
 		// Honeypot check - if filled, silently reject (bot detected)
 		if form.Honeypot != "" {
-			log.Printf("Honeypot triggered, rejecting submission")
+			requestLogger(r).Info("honeypot triggered", "form", "contact")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			json.NewEncoder(w).Encode(map[string]string{
@@ -188,15 +208,16 @@ func contactHandler(config Config) http.HandlerFunc {
 			http.Error(w, "Security verification required", http.StatusBadRequest)
 			return
 		}
-		turnstileOK, err := verifyTurnstile(config.TurnstileSecret, form.TurnstileToken, r.RemoteAddr)
+		turnstile, err := verifyTurnstile(config.TurnstileSecret, form.TurnstileToken, clientIP(r))
 		if err != nil {
-			log.Printf("Turnstile infrastructure error: %v", err)
+			failRequest(r, err)
+			requestLogger(r).Error("turnstile verify failed", "form", "contact", "error", err.Error())
 			sentry.CaptureException(err)
 			http.Error(w, "Security verification unavailable", http.StatusServiceUnavailable)
 			return
 		}
-		if !turnstileOK {
-			log.Printf("Turnstile verification failed")
+		if !turnstile.Success {
+			requestLogger(r).Warn("turnstile rejected", "form", "contact", "error_codes", turnstile.ErrorCodes)
 			http.Error(w, "Security verification failed", http.StatusForbidden)
 			return
 		}
@@ -219,7 +240,8 @@ func contactHandler(config Config) http.HandlerFunc {
 
 		// Send email via Postmark
 		if err := sendEmail(config, form); err != nil {
-			log.Printf("Error sending email: %v", err)
+			failRequest(r, err)
+			requestLogger(r).Error("email send failed", "form", "contact", "error", err.Error())
 			sentry.CaptureException(err)
 			http.Error(w, "Failed to send message", http.StatusInternalServerError)
 			return
@@ -234,7 +256,7 @@ func contactHandler(config Config) http.HandlerFunc {
 	}
 }
 
-func verifyTurnstile(secret, token, remoteIP string) (bool, error) {
+func verifyTurnstile(secret, token, remoteIP string) (TurnstileResponse, error) {
 	data := fmt.Sprintf("secret=%s&response=%s&remoteip=%s", secret, token, remoteIP)
 	resp, err := http.Post(
 		"https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -242,19 +264,16 @@ func verifyTurnstile(secret, token, remoteIP string) (bool, error) {
 		strings.NewReader(data),
 	)
 	if err != nil {
-		return false, fmt.Errorf("turnstile API request failed: %w", err)
+		return TurnstileResponse{}, fmt.Errorf("turnstile API request failed: %w", err)
 	}
 	defer resp.Body.Close()
 
 	var result TurnstileResponse
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return false, fmt.Errorf("turnstile response parse error: %w", err)
+		return TurnstileResponse{}, fmt.Errorf("turnstile response parse error: %w", err)
 	}
 
-	if !result.Success {
-		log.Printf("Turnstile verification failed: %v", result.ErrorCodes)
-	}
-	return result.Success, nil
+	return result, nil
 }
 
 var allowedProjectTypes = map[string]bool{
@@ -291,7 +310,7 @@ func estimateHandler(config Config) http.HandlerFunc {
 
 		// Honeypot check
 		if honeypot != "" {
-			log.Printf("Honeypot triggered on estimate form, rejecting")
+			requestLogger(r).Info("honeypot triggered", "form", "estimate")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			json.NewEncoder(w).Encode(map[string]string{
@@ -306,15 +325,16 @@ func estimateHandler(config Config) http.HandlerFunc {
 			http.Error(w, "Security verification required", http.StatusBadRequest)
 			return
 		}
-		turnstileOK, err := verifyTurnstile(config.TurnstileSecret, turnstileToken, r.RemoteAddr)
+		turnstile, err := verifyTurnstile(config.TurnstileSecret, turnstileToken, clientIP(r))
 		if err != nil {
-			log.Printf("Turnstile infrastructure error: %v", err)
+			failRequest(r, err)
+			requestLogger(r).Error("turnstile verify failed", "form", "estimate", "error", err.Error())
 			sentry.CaptureException(err)
 			http.Error(w, "Security verification unavailable", http.StatusServiceUnavailable)
 			return
 		}
-		if !turnstileOK {
-			log.Printf("Turnstile verification failed on estimate form")
+		if !turnstile.Success {
+			requestLogger(r).Warn("turnstile rejected", "form", "estimate", "error_codes", turnstile.ErrorCodes)
 			http.Error(w, "Security verification failed", http.StatusForbidden)
 			return
 		}
@@ -361,14 +381,16 @@ func estimateHandler(config Config) http.HandlerFunc {
 				}
 				f, err := fh.Open()
 				if err != nil {
-					log.Printf("Error opening uploaded file: %v", err)
+					failRequest(r, err)
+					requestLogger(r).Error("upload read failed", "stage", "open", "error", err.Error())
 					http.Error(w, "Error processing upload", http.StatusInternalServerError)
 					return
 				}
 				data, err := io.ReadAll(f)
 				f.Close()
 				if err != nil {
-					log.Printf("Error reading uploaded file: %v", err)
+					failRequest(r, err)
+					requestLogger(r).Error("upload read failed", "stage", "read", "error", err.Error())
 					http.Error(w, "Error processing upload", http.StatusInternalServerError)
 					return
 				}
@@ -381,7 +403,8 @@ func estimateHandler(config Config) http.HandlerFunc {
 		}
 
 		if err := sendEstimateEmail(config, r, attachments); err != nil {
-			log.Printf("Error sending estimate email: %v", err)
+			failRequest(r, err)
+			requestLogger(r).Error("email send failed", "form", "estimate", "error", err.Error())
 			sentry.CaptureException(err)
 			http.Error(w, "Failed to send estimate request", http.StatusInternalServerError)
 			return

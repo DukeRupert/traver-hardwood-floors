@@ -3,6 +3,23 @@
 	admin off
 	# Disable auto HTTPS when behind reverse proxy
 	auto_https off
+
+	# Caddy's own runtime logs: JSON on stdout, never console (ANSI colours
+	# make lines unparseable for the log shipper).
+	log {
+		output stdout
+		format json
+	}
+
+	servers {
+		# The host-level Caddy reverse proxy is the only thing that talks to
+		# this container, and it reaches us over the Docker bridge (a private
+		# address). Trusting private ranges makes this Caddy APPEND its peer to
+		# X-Forwarded-For instead of replacing the header, so the real visitor
+		# IP written by the host Caddy survives the hop to the Go API.
+		# See trustedProxyHops in api/logging.go — it must match this.
+		trusted_proxies static private_ranges
+	}
 }
 
 :{$PORT:80} {
@@ -27,6 +44,9 @@
 		request_body {
 			max_size 12MB
 		}
+		# The Go API logs these requests itself, in the fleet's standard
+		# format — skip Caddy's access log so each API request is logged once.
+		log_skip
 		reverse_proxy localhost:8080
 	}
 
@@ -37,9 +57,12 @@
 		file_server
 	}
 
-	# Logging
+	# Access log for static requests. Caddy's JSON shape differs from the fleet
+	# standard (`ts` epoch float, lowercase `level`, msg "handled request",
+	# nested request.*, `duration` in SECONDS, `uri` not `path`), so it needs a
+	# mapping at the shipping layer. Never use `format console` — ANSI codes.
 	log {
 		output stdout
-		format console
+		format json
 	}
 }

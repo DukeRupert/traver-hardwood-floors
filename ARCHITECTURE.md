@@ -129,7 +129,7 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 
     log {
         output stdout
-        format console
+        format json
     }
 }
 ```
@@ -345,7 +345,7 @@ docker compose logs
 
 1. Check CORS: `ALLOWED_ORIGIN` must match exactly
 2. Check Caddy proxy: `/api/*` routes to localhost:8080
-3. Check API is running: logs should show "Server starting on port 8080"
+3. Check API is running: logs should show `{"msg":"server starting","addr":":8080"}`
 
 ### Turnstile Errors
 
